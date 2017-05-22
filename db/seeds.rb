@@ -49,7 +49,7 @@ puts 'Creating 10 fake users...'
     password_confirmation: "123456",
     first_name: "#{Faker::Artist.name}",
     last_name: "#{Faker::Artist.name}",
-    img_url: "http://lorempixel.com/600/400/fashion"
+    img_url: avatars.sample
   )
 end
 puts 'Finished!'
@@ -62,7 +62,7 @@ puts 'Creating 10 fake lessons...'
     name: Faker::Artist.name,
     description: "#{Faker::ChuckNorris.fact}",
     user_id: (1..10).to_a.sample,
-    img_url: avatars.sample
+    img_url: "http://lorempixel.com/600/400/fashion"
   )
 end
 puts 'Finished!'

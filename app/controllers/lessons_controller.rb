@@ -13,8 +13,8 @@ def new
 end
 
 def create
-  lesson = Lesson.create(post_params)
-  if lesson.save
+  @lesson = Lesson.create(post_params)
+  if @lesson.save
     redirect_to lessons_path
   else
     render :new

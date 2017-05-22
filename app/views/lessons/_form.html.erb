@@ -1,6 +1,6 @@
 <%= simple_form_for @lesson do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
+  <%= f.input :name, label: "Title" %>
+  <%= f.input :description, as: :text %>
   <%= f.input :category, collection: Lesson::CATEGORIES %>
   <%= f.button :submit %>
 <% end %>

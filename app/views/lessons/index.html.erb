@@ -1,9 +1,12 @@
 
     <div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'banner.jpg' %>);">
       <div class="banner-content">
-        <h1>Learn and Up</h1>
-        <p>Learn what ever you, whenever... that's it !</p>
-        <a class="btn btn-primary btn-lg">How it works</a>
+        <h1 class="logo">
+          <%= link_to root_path do %>
+            <%= image_tag "logo-large.png" %>
+          <% end %>
+        </h1>
+        <p>Learn what ever, whenever... that's it !</p>
       </div>
     </div>
 

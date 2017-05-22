@@ -13,7 +13,7 @@ def new
 end
 
 def create
-  lesson = Lesson.create(lesson_params)
+  lesson = Lesson.create(post_params)
   if lesson.save
     redirect_to lessons_path
   else

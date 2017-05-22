@@ -1,11 +1,11 @@
 /* Main class */
 .navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+  // box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: white;
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
-  padding: 0px 30px;
+  padding: 0 0 0 30px;
   align-items: center;
   justify-content: space-between;
 }
@@ -21,7 +21,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 50px;
+  width: 180px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -35,7 +35,7 @@
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0;
 }
 
 /* Navbar standard link */
@@ -50,19 +50,16 @@
 
 /* Navbar right button */
 .navbar-wagon-button {
-  margin-left: 10px;
   padding: 0 20px;
-  border-radius: 20em;
-  line-height: 40px;
-  background-color: #D23333;
+  line-height: 68px;
+  background-color: #76E2F4;
   color: white;
-  font-size: 14px;
-  border: 2px solid #D23333;
+  font-size: 16px;
 }
 .navbar-wagon-button:hover {
   color: white;
-  background: #D23333;
-  border-color: #ac2626;
+  background: #76E2F4;
+  border-color: #76E2F4;
 }
 
 /* Navbar search form */
@@ -128,4 +125,25 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+#search-input input {
+  color: #76E2F4;
+  font-size: 28px;
+  font-weight: 100;
+  width: 100%;
+  padding: 10px 0 6px;
+  border: none;
+  margin-right: 70px;
+}
+#search-input input, #search-input input:focus {
+  transition: border-color .3s ease-in;
+  outline: 0;
+}
+#search-input input:focus {
+  color: black;
+  border-color: #76E2F4;
+}
+#search-input input::-webkit-input-placeholder, #search-input input:-moz-placeholder, #search-input input:-moz-placeholder, #search-input input:-ms-input-placeholder {
+  font-weight: 100;
+  color: #76E2F4;
 }

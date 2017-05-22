@@ -8,6 +8,20 @@ end
 def show
 end
 
+def new
+  @lesson = Lesson.new
+end
+
+def create
+  lesson = Lesson.create(lesson_params)
+  if lesson.save
+    redirect_to lessons_path
+  else
+    render :new
+  end
+end
+
+
 private
 
 def set_lesson

@@ -4,7 +4,7 @@
   background: white;
   transition: all 0.3s ease;
   display: flex;
-  height: 70px;
+  height: 40px;
   padding: 0 0 0 30px;
   align-items: center;
   justify-content: space-between;
@@ -21,7 +21,7 @@
 
 /* Navbar logo */
 .navbar-wagon-brand img {
-  width: 180px;
+  width: 120px;
 }
 
 /* Navbar right section (with form, links, button) */
@@ -50,16 +50,19 @@
 
 /* Navbar right button */
 .navbar-wagon-button {
-  padding: 0 20px;
-  line-height: 68px;
+  font-size: 12px !important;
+  padding: 12px 5px;
+  border-radius: 0;
+  height: 40px;
   background-color: #76E2F4;
   color: white;
   font-size: 16px;
 }
 .navbar-wagon-button:hover {
-  color: white;
-  background: #76E2F4;
+  color: #76E2F4;
+  background: white;
   border-color: #76E2F4;
+  text-decoration: none;
 }
 
 /* Navbar search form */
@@ -130,9 +133,10 @@
 /* INPUT */
 #search-input input {
   color: $gray-light;
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 100;
-  width: 100%;
+  width: 300px;
+  height: 40px;
   padding: 10px 0 6px;
   border: none;
 }
@@ -142,7 +146,6 @@
 }
 #search-input input:focus {
   color: $gray;
-  border-color: $blue;
 }
 #search-input input::-webkit-input-placeholder, #search-input input:-moz-placeholder, #search-input input:-moz-placeholder, #search-input input:-ms-input-placeholder {
   font-weight: 100;
@@ -153,63 +156,4 @@
 #type.facet .ais-refinement-list--checkbox {
   display: none;
 }
-
-
-
-/* NO RESULTS */
-.no-results #pagination, .no-results #sort-by, .no-results #stats, .no-results #facets {
-  display: none;
-}
-#no-results-message {
-  text-align: center;
-}
-#no-results-message p {
-  font-size: 28px;
-  font-weight: 100;
-}
-#no-results-message ul {
-  list-style-type: none;
-}
-#no-results-message li {
-  font-size: 12px;
-  position: relative;
-  display: inline-block;
-  margin: 4px 2px;
-  padding: 4px 28px 4px 8px;
-  color: #999;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-}
-#no-results-message li span.value {
-  font-weight: bold;
-  color: #000;
-}
-#no-results-message li a.remove img {
-  position: absolute;
-  top: 3px;
-  right: 5px;
-  float: right;
-  width: 17px;
-  height: 17px;
-  opacity: .5;
-}
-#no-results-message li a.remove:hover img {
-  opacity: 1;
-}
-a.clear-all {
-  font-size: 12px;
-  line-height: 1;
-  display: inline-block;
-  margin: 10px;
-  padding: 8px 12px;
-  text-decoration: none;
-  color: black;
-  border: 2px solid #ddd;
-  border-radius: 4px;
-}
-a.clear-all:hover {
-  transition: border-color .3s ease-in;
-  border-color: #999;
-}
-
 

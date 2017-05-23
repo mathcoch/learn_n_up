@@ -9,4 +9,8 @@ class Lesson < ApplicationRecord
   validates :category, inclusion: CATEGORIES
   validates :level, inclusion: LEVELS
   validates :duration, inclusion: DURATION
+
+  def category_number
+    CATEGORIES.index(self.category) + 1
+  end
 end

@@ -1,9 +1,8 @@
 .banner {
   color: white;
   text-align: center;
-  // height: 60vh;
-  /*if you have a 70px navbar => height: calc(100vh - 70px); */
-  // background-size: cover !important;
+  height: 60vh;
+  background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +17,7 @@
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
 }
 .banner h1.logo img{
-  width: 250px;
+  width: 150px;
 }
 .banner p {
   font-size: 30px;
@@ -48,25 +47,74 @@
   text-decoration:underline;
 }
 .cat-1{
-  color: $green;
+  background-color: $cat1 !important;
+}
+.cat-1 a{
+  color: white;
+}
+.cat-1 a:hover{
+  color: white;
+  text-decoration: none !important;
+}
+.cat-2{
+  background-color: $cat2 !important;
 }
 .cat-2 a{
-  color: $blue;
+  color: white;
+}
+.cat-2 a:hover{
+  color: white;
+  text-decoration: none !important;
+}
+.cat-3{
+  background-color: $cat3 !important;
 }
 .cat-3 a{
-  color: $green;
+  color: white;
+}
+.cat-3 a:hover{
+  color: white;
+  text-decoration: none !important;
+}
+.cat-4{
+  background-color: $cat4 !important;
 }
 .cat-4 a{
-  color: $gray-dark;
+  color: white;
+}
+.cat-4 a:hover{
+  color: white;
+  text-decoration: none !important;
+}
+.cat-5{
+  background-color: $cat5 !important;
 }
 .cat-5 a{
-  color: $yellow;
+  color: white;
+}
+.cat-5 a:hover{
+  color: white;
+  text-decoration: none !important;
+}
+.cat-6{
+  background-color: $cat6 !important;
 }
 .cat-6 a{
-  color: $orange;
+  color: white;
+}
+.cat-6 a:hover{
+  color: white;
+  text-decoration: none !important;
+}
+.cat-7{
+  background-color: $cat7 !important;
 }
 .cat-7 a{
-  color: $dark-red;
+  color: white;
+}
+.cat-7 a:hover{
+  color: white;
+  text-decoration: none !important;
 }
 .banner-user {
   height: 30vh;

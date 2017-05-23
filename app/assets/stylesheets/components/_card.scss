@@ -3,13 +3,23 @@
   background: #ffffff;
   text-decoration: none;
   border-radius: 5px;
-  // box-shadow: rgba(121, 121, 121, .35) 1px 20px 30px;
-  text-align:center;
+  box-shadow: rgba(121, 121, 121, .35) 1px 20px 30px;
   margin:19px;
+  padding:0;
   cursor: pointer;
-  height: 300px;
   width: 30%;
   outline: 0;
+}
+.lesson-card:hover{
+  box-shadow: none;
+}
+.show-lesson{
+  padding: 15px 15px;
+  text-align:center;
+}
+.lesson-card:hover .show-lesson{
+  color:white;
+  background-color: $gray;
 }
 .lesson-card a{
   color: #000000;
@@ -23,16 +33,34 @@
 }
 .card-user {
 }
+.card-name{
+  text-align:left;
+  padding:0 15px;
+}
 .card-category {
+  padding:8px 16px;
+  background: $gray;
+  border-radius: 20px;
+  color:white;
+  position:absolute;
+  top: -15px;
+  right: -15px;
 }
 .card-description {
+  height:90px;
+  text-align:left;
+  margin: 20px 0;
+  padding:0 15px;
 }
 .card-description h2 {
   font-size: 24px;
 }
 .card-description p {
   font-size: 13px;
-  }
+}
+.lesson-informationLabel{
+  padding:0 15px;
+}
 .card-link {
 }
 .card-link:hover{

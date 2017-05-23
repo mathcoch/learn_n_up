@@ -6,6 +6,7 @@ class LessonsController < ApplicationController
   end
 
   def show
+    @meeting = Meeting.new
   end
 
   def new
@@ -21,7 +22,6 @@ class LessonsController < ApplicationController
       render :new
     end
   end
-
 
   private
 

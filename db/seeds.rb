@@ -55,11 +55,11 @@ courses = ['http://lorempixel.com/600/400/business/1',
 puts 'Creating 10 fake users...'
 10.times do
  user = User.create(
-   email:    "#{Faker::Artist.name}@gmail.com",
+   email:    "#{Faker::Name.last_name}@gmail.com",
    password: "123456",
    password_confirmation: "123456",
-   first_name: "#{Faker::Artist.name}",
-   last_name: "#{Faker::Artist.name}",
+   first_name: "#{Faker::Name.first_name}",
+   last_name: "#{Faker::Name.last_name}",
    img_url: avatars.sample
  )
 end
@@ -67,17 +67,139 @@ puts 'Finished!'
 
 
 puts 'Creating 10 fake lessons...'
-10.times do
- lesson = Lesson.create(
-   category:    ['Language', 'Science', 'Sport', 'Finance'].sample,
-   name: Faker::Artist.name,
-   description: "#{Faker::Educator.course}",
+# 10.times do
+#  lesson = Lesson.create(
+#    category:    ['Language', 'Science', 'Sport', 'Finance'].sample,
+#    name: Faker::Artist.name,
+#    description: "#{Faker::Educator.course}",
+#    user_id: (1..10).to_a.sample,
+#    img_url: courses.sample,
+#    level:['Beginner', 'Advanced', 'Pro'].sample,
+#    duration: rand(0..8),
+#    address: "#{Faker::Address.street_address}",
+#    city: "#{Faker::Address.city}"
+#  )
+# end
+
+lesson = Lesson.create(
+   category:    'Language',
+   name: "Learn mandarin basics",
+   description: "Introductory Mandarin is the first in a series of six courses designed to teach you how to speak Mandarin Chinese. This course will introduce you to the basic language you will need to eat, live, and get around in Mandarin speaking countries.",
    user_id: (1..10).to_a.sample,
    img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}"
- )
-end
+   )
+
+lesson = Lesson.create(
+   category:    'Science',
+   name: "Climate Change",
+   description: "Do you want to talk about climate change from an informed perspective? Are you interested in how global warming works? Climate change is the biggest challenge of our time, and climate science is critical to finding solutions. How can we make the best decisions about our present and future? By taking this course, you can be part of the global conversation.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+lesson = Lesson.create(
+   category:    'Language',
+   name: "Conversational English Skills",
+   description: "Are you finding it difficult to start the conversation, or find the right words when communicating in English? Do you know how to start and end conversations in a polite way? Do it through this 4h course.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+lesson = Lesson.create(
+   category:    'Sport',
+   name: "Ethics of Sports",
+   description: "While sport sometimes is dismissed as frivolous, it not only raises fundamental ethical questions, such as what counts as fair play, but is an important cultural phenomenon attracting the interests of millions of people around the globe. Love sports or hate them, their cultural role or influence cannot easily be dismissed.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+lesson = Lesson.create(
+   category:    'Science',
+   name: "Data Science Orientation",
+   description: "This is the first stop in the Data Science curriculum from Microsoft. It will help you get started with the program, plan your learning schedule, and connect with fellow students and teaching assistants.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+
+lesson = Lesson.create(
+   category:    'Finance',
+   name: "Personal Finance",
+   description: "Want to better understand investments? How credit works? How and why insurance products like life insurance, health insurance, and property insurance might be relevant for you? How to maximize your retirement savings? This course aims to make finding the answers to these questions, and many other similar questions, interesting and fun.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+lesson = Lesson.create(
+   category:    'Language',
+   name: "French theatre",
+   description: "Le théâtre classique du 17e siècle passe pour le sommet de l’art du théâtre en France. Ses trois représentants les plus connus, Corneille et Racine pour la tragédie et Molière pour la comédie comptent parmi les plus grands dramaturges européens de tous les temps, et Molière reste l’un des auteurs les plus joués dans le monde.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+lesson = Lesson.create(
+   category:    'Finance',
+   name: "How to become a billionnaire?",
+   description: "Are you involved in the development and execution of technical projects and eager to know what it takes to fund a project successfully? Would you like to be more in touch with the latest developments in project finance and able to use these to your advantage? If so, you’re in the right place!",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+lesson = Lesson.create(
+   category:    'Sport',
+   name: "Math in Sports",
+   description: "In this course you will learn to use some mathematical tools that can help predict and analyze sporting performances and outcomes. This course will help coaches, players, and enthusiasts to make educated decisions about strategy, training, and execution.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
+lesson = Lesson.create(
+   category:    'Science',
+   name: "How to raise your kid?",
+   description: "Developmental psychology is the study of an individual’s social, emotional, cognitive, and biological development through his or her lifespan. The focus of this course will be from infancy to later life.",
+   user_id: (1..10).to_a.sample,
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
+   )
+
 puts 'Finished!'

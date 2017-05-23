@@ -14,7 +14,16 @@
 }
 .description {
   text-align: center;
+  overflow:hidden;
 }
 .category-list {
-  margin-top: 40px;
+  margin: 80px 0;
+  text-align:center;
+}
+.list-category {
+  width:350px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 0;
+  margin-bottom: 0;
 }

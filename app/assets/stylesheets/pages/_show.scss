@@ -1,0 +1,17 @@
+section.lesson{
+  background: $gray-light;
+  padding: 60px 0;
+  position:relative;
+}
+.lesson .card-category{
+  position:absolute;
+  top: -80px;
+}
+.book-form{
+  padding:25px;
+  background:white;
+  position:absolute;
+  top: -160px;
+  width:100%;
+  box-shadow: rgba(121, 121, 121, 0.35) 1px 10px 15px;
+}

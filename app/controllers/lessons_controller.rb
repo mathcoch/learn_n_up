@@ -30,7 +30,7 @@ class LessonsController < ApplicationController
   end
 
   def post_params
-    params.require(:lesson).permit(:name, :category, :description)
+    params.require(:lesson).permit(:name, :category, :description, :level, :days => [])
   end
 
 end

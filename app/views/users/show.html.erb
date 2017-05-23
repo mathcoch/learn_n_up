@@ -1,0 +1,33 @@
+
+    <div class="banner-user" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(https://static.pexels.com/photos/33085/knowledge-book-library-glasses.jpg) repeat top center fixed; background-size:100%;">
+      <div class="banner-user-content">
+        <p>Show de <%= current_user.first_name %></p>
+      </div>
+    </div>
+
+    <div class="wrapper-grey padded">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h2>The lessons you teach</h2>
+            <% if current_user.lessons.empty? %>
+              <%= 'no lessons' %>
+            <% else %>
+              <ul>
+              <% current_user.lessons.each do |lesson| %>
+                <li><%= lesson.name %></li>
+              <% end %>
+              </ul>
+            <% end %>
+          </div>
+        </div>
+         <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <h2>Your lessons booked</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

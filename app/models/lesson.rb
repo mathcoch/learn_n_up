@@ -10,6 +10,10 @@ class Lesson < ApplicationRecord
   validates :level, inclusion: LEVELS
   validates :duration, inclusion: DURATION
 
+  def disable_days
+    JSON.parse(days).join(",")
+  end
+
   def category_number
     CATEGORIES.index(self.category) + 1
   end

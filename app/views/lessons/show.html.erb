@@ -31,6 +31,15 @@
           </div>
         </div>
       </div>
+      <div class="col-xs-12 col-sm-4" id="lesson_book">
+        <%= form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
+
+          <%= f.text_field :date, placeholder: "Choose your date" %>
+
+          <%= f.button "Book it", class: "btn btn-danger", style: "width: 100%" %>
+        <% end %>
+        </form>
+      </div>
     </div>
   </div>
 
@@ -73,4 +82,18 @@
       </div>
     </div>
   </div>
+</div>
+<% content_for(:js) do %>
+  <% javascript_tag do %>
+    $(document).ready(function(){
+      $('#meeting_date').datepicker({
+        format: "dd/mm/yyyy",
+        weekStart: 1,
+        daysOfWeekHighlighted: "<%= @lesson.disable_days %>",
+        daysOfWeekDisabled: "<%= @lesson.disable_days %>",
+        todayHighlight: true
+      });
+    });
+  <% end %>
+<% end %>
 </section>

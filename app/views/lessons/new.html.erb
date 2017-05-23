@@ -13,8 +13,8 @@
         <%= f.input :duration, collection: Lesson::DURATION, label: "Duration in hours" %>
         <%= f.input :level, collection: Lesson::LEVELS %>
        <%= f.input :days, as: :check_boxes, item_wrapper_tag: :div,
-          collection: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          checked: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] %>
+          collection: [["Monday", 1], ["Tuesday", 2], ["Wednesday", 3], ["Thursday", 4], ["Friday", 5], ["Saturday", 6], ["Sunday", 0]]
+           %>
         <%= f.input :address %>
         <%= f.input :city %>
         <%= f.button :submit %>

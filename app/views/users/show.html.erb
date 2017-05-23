@@ -9,7 +9,16 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
-            <h2>Your lessons booked</h2>
+            <h2>The lessons you teach</h2>
+            <% if current_user.lessons.empty? %>
+              <%= 'no lessons' %>
+            <% else %>
+              <ul>
+              <% current_user.lessons.each do |lesson| %>
+                <li><%= lesson.name %></li>
+              <% end %>
+              </ul>
+            <% end %>
           </div>
         </div>
          <div class="row">

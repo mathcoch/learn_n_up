@@ -1,43 +1,67 @@
+.lesson-card{
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: rgba(121, 121, 121, .35) 1px 20px 30px;
+  margin:19px;
+  padding:0;
+  cursor: pointer;
+  width: 30%;
+  outline: 0;
+}
+.lesson-card:hover{
+  box-shadow: none;
+}
+.show-lesson{
+  padding: 15px 15px;
+  text-align:center;
+}
+.lesson-card:hover .show-lesson{
+  color:white;
+  background-color: $gray;
+}
+.lesson-card a{
+  color: #000000;
+}
+.lesson-card a:hover{
+  color: #000000;
+  text-decoration: none;
+}
 .card {
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  color: white;
-  position: relative;
+  overflow: hidden;
 }
 .card-user {
-  position: absolute;
-  right: 10px;
-  top: 10px;
+}
+.card-name{
+  text-align:left;
+  padding:0 15px;
 }
 .card-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 10px;
-  text-transform: uppercase;
+  padding:8px 16px;
+  background: $gray;
+  border-radius: 20px;
+  color:white;
+  position:absolute;
+  top: -15px;
+  right: -15px;
 }
 .card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  height:90px;
+  text-align:left;
+  margin: 20px 0;
+  padding:0 15px;
 }
 .card-description h2 {
   font-size: 24px;
 }
 .card-description p {
   font-size: 13px;
-  }
+}
+.lesson-informationLabel{
+  padding:0 15px;
+}
 .card-link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index:2;
-  background: black;
-  opacity: 0;
 }
 .card-link:hover{
-  opacity: 0.1;
 }

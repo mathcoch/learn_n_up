@@ -3,6 +3,6 @@ class Lesson < ApplicationRecord
 
   CATEGORIES = ["Music", "Language", "Science", "Culture", "Entrepreneurship", "Sport", "Finance"]
 
-  validates :name, :description, presence: true
+  validates :name, :description, :user, presence: true
   validates :category, inclusion: CATEGORIES
 end

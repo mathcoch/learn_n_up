@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   def create
-    @meeting = Meeting.new
+    @meeting = Meeting.new(meeting_params)
     @meeting.user = current_user
     @lesson = Lesson.find(params[:lesson_id])
     @meeting.lesson = @lesson
@@ -13,7 +13,7 @@ class MeetingsController < ApplicationController
 
   private
   def meeting_params
-    params.require(:meeting).permit(:name, :category, :description)
+    params.require(:meeting).permit(:date)
   end
 
 end

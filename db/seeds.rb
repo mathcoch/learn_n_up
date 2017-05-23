@@ -77,7 +77,8 @@ puts 'Creating 10 fake lessons...'
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   days: ['1', '2', '4']
  )
 end
 puts 'Finished!'

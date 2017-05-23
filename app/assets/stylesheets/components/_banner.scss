@@ -1,12 +1,16 @@
 .banner {
   color: white;
   text-align: center;
-  height: 60vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  // height: 60vh;
+  /*if you have a 70px navbar => height: calc(100vh - 70px); */
   // background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.banner-content{
+  display:block;
+  overflow:hidden;
 }
 .banner h1 {
   font-size: 50px;
@@ -23,6 +27,46 @@
   color: rgba(255, 255, 255, 1);
   margin-bottom: 20px;
 }
+.list-category{
+  margin:0 auto 50px auto;
+  padding: 0;
+  width:450px;
+  list-style-type: none;
+}
+.list-category li{
+  margin: 5px;
+  background-color: white;
+  padding:8px 16px;
+}
+.list-category li:hover{
+  opacity: 0.6
+}
+.list-category li a{
+  text-decoration:none;
+}
+.list-category li a:hover{
+  text-decoration:underline;
+}
+.cat-1{
+  color: $green;
+}
+.cat-2 a{
+  color: $blue;
+}
+.cat-3 a{
+  color: $green;
+}
+.cat-4 a{
+  color: $gray-dark;
+}
+.cat-5 a{
+  color: $yellow;
+}
+.cat-6 a{
+  color: $orange;
+}
+.cat-7 a{
+  color: $dark-red;
 .banner-user {
   height: 30vh;
 }

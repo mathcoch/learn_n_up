@@ -2,19 +2,20 @@
   color: #000000;
   background: #ffffff;
   text-decoration: none;
-  border-radius: 5px;
-  box-shadow: rgba(121, 121, 121, .35) 1px 20px 30px;
+  box-shadow: rgba(121, 121, 121, .35) 1px 10px 15px;
   margin:19px;
   padding:0;
   cursor: pointer;
   width: 30%;
   outline: 0;
+  text-align:right;
 }
 .lesson-card:hover{
   box-shadow: none;
 }
 .show-lesson{
   padding: 15px 15px;
+  margin-bottom:0;
   text-align:center;
 }
 .lesson-card:hover .show-lesson{
@@ -42,9 +43,8 @@
   background: $gray;
   border-radius: 20px;
   color:white;
-  position:absolute;
-  top: -15px;
-  right: -15px;
+  text-align:right;
+  margin-right: -15px;
 }
 .card-description {
   height:90px;

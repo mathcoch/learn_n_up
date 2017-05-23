@@ -2,7 +2,19 @@
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
     <h2>Create your lesson</h2>
-      <%= render 'form' %>
+      <%= simple_form_for @lesson do |f| %>
+        <%= f.input :name, label: "Title" %>
+        <%= f.input :description, as: :text %>
+        <%= f.input :category, collection: Lesson::CATEGORIES %>
+        <%= f.input :duration, collection: Lesson::DURATION, label: "Duration in houres" %>
+        <%= f.input :level, collection: Lesson::LEVELS %>
+       <%= f.input :days, as: :check_boxes, item_wrapper_tag: :div,
+          collection: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          checked: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] %>
+        <%= f.input :address %>
+        <%= f.input :city %>
+        <%= f.button :submit %>
+      <% end %>
       <%= link_to "Back to the lessons", lessons_path %>
     </div>
   </div>

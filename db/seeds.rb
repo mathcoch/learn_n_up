@@ -53,7 +53,17 @@ courses = ['http://lorempixel.com/600/400/business/1',
 
 
 puts 'Creating 10 fake users...'
-10.times do
+
+user = User.create(
+   email:    "learnup@gmail.com",
+   password: "123456",
+   password_confirmation: "123456",
+   first_name: "Tom",
+   last_name: "Sawyer",
+   img_url: avatars.sample
+ )
+
+9.times do
  user = User.create(
    email:    "#{Faker::Name.last_name}@gmail.com",
    password: "123456",

@@ -1,16 +1,18 @@
 .lesson-card{
+
+}
+.card{
+  display:block;
   color: #000000;
   background: #ffffff;
-  text-decoration: none;
   box-shadow: rgba(121, 121, 121, .35) 1px 10px 15px;
-  margin:19px;
+  text-decoration: none;
+  margin:20px;
   padding:0;
   cursor: pointer;
-  width: 30%;
-  outline: 0;
   text-align:right;
 }
-.lesson-card:hover{
+.card:hover{
   box-shadow: none;
 }
 .show-lesson{
@@ -28,9 +30,6 @@
 .lesson-card a:hover{
   color: #000000;
   text-decoration: none;
-}
-.card {
-  overflow: hidden;
 }
 .card-user {
 }

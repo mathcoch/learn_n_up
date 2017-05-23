@@ -1,9 +1,10 @@
 
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= @lesson.img_url %>); height: 50vh; background-position: center;">
-  </div>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= @lesson.img_url %>); height: 50vh; background-position: center;">
+</div>
 <section class="lesson">
   <div class="header-lesson">
     <div class="container">
+
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-1">
           <div class="header-lesson-details">
@@ -22,24 +23,22 @@
             </div>
           </div>
         </div>
+
         <div class="col-xs-12 col-sm-4">
           <div class="book-form">
             <form action="<%= lesson_meetings_path(@lesson) %>" method="post" >
-              <h4>Book this lesson</h3>
-              <input type="submit" class="btn btn-danger" value="Book it" style="width: 100%">
+              <h4>Book this lesson</h4>
+              <%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
+                <%= f.input :date, placeholder: "Choose your date", data-provide:'datepicker' %>
+                <%= f.input :selected_date, :as => :string, :input_html => { data: {behaviour: "datepicker"}} %>
+                <%= f.submit "Book lesson", class: "btn btn-danger", style: "width: 100%" %>
+              <% end %>
             </form>
           </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-4" id="lesson_book">
-        <%= form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
 
-          <%= f.text_field :date, placeholder: "Choose your date" %>
-
-          <%= f.button "Book it", class: "btn btn-danger", style: "width: 100%" %>
-        <% end %>
-        </form>
       </div>
+
     </div>
   </div>
 
@@ -82,7 +81,8 @@
       </div>
     </div>
   </div>
-</div>
+</section>
+
 <% content_for(:js) do %>
   <% javascript_tag do %>
     $(document).ready(function(){
@@ -96,4 +96,3 @@
     });
   <% end %>
 <% end %>
-</section>

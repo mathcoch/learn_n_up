@@ -3,9 +3,9 @@ class Lesson < ApplicationRecord
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']
   LEVELS = ['Beginner', 'Advanced', 'Pro']
-  DURATION = (0..20)
+  DURATION = (0..8)
 
-  validates :name, :description, :user, presence: true
+  validates :name, :description, :user, :address, :city, presence: true
   validates :category, inclusion: CATEGORIES
   validates :level, inclusion: LEVELS
   validates :duration, inclusion: DURATION

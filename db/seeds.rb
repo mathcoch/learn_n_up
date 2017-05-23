@@ -73,7 +73,11 @@ puts 'Creating 10 fake lessons...'
    name: Faker::Artist.name,
    description: "#{Faker::Educator.course}",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample
+   img_url: courses.sample,
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}"
  )
 end
 puts 'Finished!'

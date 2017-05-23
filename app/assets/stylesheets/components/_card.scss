@@ -1,6 +1,3 @@
-.lesson-card{
-
-}
 .card{
   display:block;
   color: #000000;
@@ -20,9 +17,33 @@
   margin-bottom:0;
   text-align:center;
 }
-.lesson-card:hover .show-lesson{
+.lesson-card:hover .show-lesson-cat-1{
   color:white;
-  background-color: $gray;
+  background-color: $cat1;
+}
+.lesson-card:hover .show-lesson-cat-2{
+  color:white;
+  background-color: $cat2;
+}
+.lesson-card:hover .show-lesson-cat-3{
+  color:white;
+  background-color: $cat3;
+}
+.lesson-card:hover .show-lesson-cat-4{
+  color:white;
+  background-color: $cat4;
+}
+.lesson-card:hover .show-lesson-cat-5{
+  color:white;
+  background-color: $cat5;
+}
+.lesson-card:hover .show-lesson-cat-6{
+  color:white;
+  background-color: $cat6;
+}
+.lesson-card:hover .show-lesson-cat-7{
+  color:white;
+  background-color: $cat7;
 }
 .lesson-card a{
   color: #000000;
@@ -39,7 +60,6 @@
 }
 .card-category {
   padding:8px 16px;
-  background: $gray;
   border-radius: 20px;
   color:white;
   text-align:right;

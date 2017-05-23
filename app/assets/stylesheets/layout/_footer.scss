@@ -1,8 +1,9 @@
 // Your footer style
 .background {
   background-color: #FFFFFF;
-  background-image: -webkit-linear-gradient(80deg, #f4f4f4 50%, #FFFFFF 50%);
+  background-image: -webkit-linear-gradient(85deg, $light-blue 50%,  $gray-light 50%);
   min-height: 185px;
+  padding: 50px;
 }
 .social:hover {
      -webkit-transform: scale(1.1);
@@ -23,16 +24,16 @@
     Multicoloured Hover Variations
 */
  #social-fb {
-     color: #76E2F4;
+     color: $gray-light;
  }
  #social-tw {
-     color: #76E2F4;
+     color: $gray-light;
  }
  #social-gp {
-     color: #76E2F4;
+     color: $gray-light;
  }
  #social-em {
-     color: #76E2F4;
+     color: $gray-light;
  }
  #social-fb:hover {
      color: #301781;

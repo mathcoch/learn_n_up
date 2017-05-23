@@ -29,7 +29,7 @@
           <% end %> -->
           <% @lessons.each do |lesson| %>
             <div class="col-xs-12 col-sm-4 lesson-card">
-              <a class="card" href="#">
+              <a class="card" href="<%= lesson_path(lesson) %>">
                 <span class="card-category"><%= lesson.category %></span>
                 <h2 class="card-name"><%= lesson.name %></h2>
                 <span class="lesson-informationLabel">

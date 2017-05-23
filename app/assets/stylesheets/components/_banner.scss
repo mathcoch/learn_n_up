@@ -67,4 +67,12 @@
 }
 .cat-7 a{
   color: $dark-red;
+.banner-user {
+  height: 30vh;
+}
+.banner-user-content {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

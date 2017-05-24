@@ -31,15 +31,25 @@
             <% end %>
           </div>
           <div class="col-sm-4">
-            <h2>Your meetings</h2>
-            <% current_user.meetings.each do |meeting| %>
+             <h2>Your meetings</h2>
+             <% current_user.lessons.each do |lesson| %>
+              <% lesson.meetings.each do |meeting|  %>
+                 <% meeting.dates_array.each do |date| %>
+                   <div>
+                     <h3><%= date %></h3>
+                     <h4>Lesson : <%= meeting.lesson.name %></h4>
+                   </div>
+                 <% end %>
+               <% end %>
+              <% end %>
+          <!--  <% current_user.meetings.each do |meeting| %>
               <% meeting.dates_array.each do |date| %>
                 <div>
                   <h3><%= date %></h3>
                   <h4>Lesson : <%= meeting.lesson.name %></h4>
                 </div>
               <% end %>
-            <% end %>
+            <% end %> -->
           </div>
         </div>
          <div class="row" id="show-user-2">

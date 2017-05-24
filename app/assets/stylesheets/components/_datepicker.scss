@@ -1,3 +1,6 @@
 .datepicker {
   margin-bottom:20px;
 }
+tr .disabled {
+  background-color: $gray-light !important;
+}

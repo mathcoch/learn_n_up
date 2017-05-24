@@ -8,7 +8,6 @@ class MeetingsController < ApplicationController
     if @meeting.save
       @lesson.dates = JSON.parse(@lesson.dates) - JSON.parse(@meeting.dates)
       @lesson.save
-      binding.pry
       redirect_to lesson_path(@lesson)
     else
       render 'lessons/show'

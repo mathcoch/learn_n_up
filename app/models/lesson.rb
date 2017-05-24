@@ -6,7 +6,7 @@ class Lesson < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :name, :category, :category_number, :user_id, :description
+    attribute :name, :category, :category_number, :user_id, :description, :description_crop
   end
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']

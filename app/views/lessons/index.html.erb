@@ -97,14 +97,14 @@
   <script type="text/html" id="lesson-template">
     <div class="lesson">
       <div class="col-sm-3 lesson-card">
-          <a class="card" href="lessons/{{{id}}}">
+          <a class="card" href="lessons/{{{objectID}}}">
           <span class="card-category cat-{{{category_number}}}">{{{_highlightResult.category.value}}}</span>
           <h2 class="card-name">{{{_highlightResult.name.value}}}</h2>
           <span class="lesson-informationLabel">
             <i class="lesson-informationIcon  icon-calendar3"></i>
             6 mois | Paris
           </span>
-          <p class="card-description">{{{_highlightResult.description.value.substring(0,120) + " ..."}}}</p>
+          <p class="card-description">{{{_highlightResult.description_crop.value}}}</p>
           <p class="show-lesson show-lesson-cat-{{{category_number}}}">Show lesson</p>
         </a>
       </div>

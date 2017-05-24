@@ -11,7 +11,13 @@
 .description-title {
   text-align: center;
   color: #311782;
+  line-height: 100%;
 }
+.description-title img {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
 .description {
   text-align: center;
   overflow:hidden;

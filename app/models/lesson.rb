@@ -1,7 +1,13 @@
 class Lesson < ApplicationRecord
   belongs_to :user
-  geocoded_by :address
+  has_many :meetings, dependent: :destroy
   after_validation :geocode, if: :address_changed?
+  geocoded_by :address
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :name, :category, :description
+  end
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']
   LEVELS = ['Beginner', 'Advanced', 'Pro']

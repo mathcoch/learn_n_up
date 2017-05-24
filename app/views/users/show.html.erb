@@ -8,33 +8,54 @@
     <div class="wrapper-grey padded">
       <div class="container">
         <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
+          <div class="col-sm-8">
             <h2>Your sessions as a teacher</h2>
             <% if current_user.lessons.empty? %>
               <%= 'no lessons' %>
             <% else %>
-              <ul>
               <% current_user.lessons.each do |lesson| %>
-                <li><%= lesson.name %></li>
+                <div class="product">
+                  <div class="product-body">
+                    <h3><%= lesson.name %></h3>
+                    <p> <%= lesson.description[0..120] + " ..." %></p>
+                  </div>
+                  <ul class="list-inline product-controls hidden-sm hidden-xs">
+                      <%= link_to lesson_path(lesson), method: 'delete' do %>
+                        <li><i class="fa fa-trash"></i></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+            <% end %>
+          </div>
+          <div class="col-sm-4">
+            <h2>Your meetings</h2>
+            <% current_user.meetings.each do |meeting| %>
+              <% meeting.dates_array.each do |date| %>
+                <div>
+                  <h3><%= date %></h3>
+                  <h4>Lesson : <%= meeting.lesson.name %></h4>
+                </div>
               <% end %>
-              </ul>
             <% end %>
           </div>
         </div>
          <div class="row">
-          <div class="col-sm-8 col-sm-offset-2">
+          <div class="col-sm-12">
             <h2>Your sessions as a student</h2>
             <% current_user.meetings.each do |meeting| %>
-              <div class="product">
-                <%= image_tag meeting.lesson.user.avatar_url, alt: "avatar", class: "avatar" %>
-                <div class='product-body'>
-                  <h3><%= meeting.lesson.name %></h3>
-                  <p><%= meeting.lesson.description %></p>
+                <div class="product">
+                  <%= image_tag meeting.lesson.user.avatar_url, alt: "avatar", class: "avatar" %>
+                  <div class='product-body'>
+                    <h3><%= meeting.lesson.name %> | <%= meeting.view_dates %></h3>
+                    <p><%= meeting.lesson.description %></p>
+                  </div>
+                  <ul class="list-inline product-controls hidden-sm hidden-xs">
+                    <%= link_to meeting_path(meeting), method: 'delete' do %>
+                      <li><i class="fa fa-trash"></i></li>
+                  <% end %>
+                  </ul>
                 </div>
-                <ul class="list-inline product-controls hidden-sm hidden-xs">
-                  <li><a href=""><i class="fa fa-trash"></i></a></li>
-                </ul>
-              </div>
             <% end %>
 
           </div>

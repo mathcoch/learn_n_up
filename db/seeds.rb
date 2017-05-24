@@ -40,16 +40,16 @@ avatars = ['https://avatars2.githubusercontent.com/u/25741493?v=3',
  'https://avatars0.githubusercontent.com/u/25386031?v=3',
  'https://avatars0.githubusercontent.com/u/1410430?v=3']
 
-courses = ['http://lorempixel.com/600/400/business/1',
- 'http://lorempixel.com/600/400/business/2',
- 'http://lorempixel.com/600/400/business/3',
- 'http://lorempixel.com/600/400/business/4',
- 'http://lorempixel.com/600/400/business/5',
- 'http://lorempixel.com/600/400/business/6',
- 'http://lorempixel.com/600/400/business/7',
- 'http://lorempixel.com/600/400/business/8',
- 'http://lorempixel.com/600/400/business/9',
- 'http://lorempixel.com/600/400/business/10',]
+courses = ['http://lorempixel.com/1600/1000/business/1',
+ 'http://lorempixel.com/1600/1000/business/2',
+ 'http://lorempixel.com/1600/1000/business/3',
+ 'http://lorempixel.com/1600/1000/business/4',
+ 'http://lorempixel.com/1600/1000/business/5',
+ 'http://lorempixel.com/1600/1000/business/6',
+ 'http://lorempixel.com/1600/1000/business/7',
+ 'http://lorempixel.com/1600/1000/business/8',
+ 'http://lorempixel.com/1600/1000/business/9',
+ 'http://lorempixel.com/1600/1000/business/10',]
 
 
 puts 'Creating 10 fake users...'

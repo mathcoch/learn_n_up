@@ -1,9 +1,10 @@
 
-  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= @lesson.img_url %>); height: 50vh; background-position: center;">
-  </div>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= @lesson.img_url %>); height: 50vh; background-position: center;">
+</div>
 <section class="lesson">
   <div class="header-lesson">
     <div class="container">
+
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-1">
           <div class="header-lesson-details">
@@ -22,24 +23,24 @@
             </div>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-4">
+
+        <div class="col-xs-12 col-sm-4" style="z-index: 1;">
           <div class="book-form">
+            <div class='datepicker' >
+              <div id="datepicker_id"></div>
+            </div>
             <form action="<%= lesson_meetings_path(@lesson) %>" method="post" >
-              <h4>Book this lesson</h3>
-              <input type="submit" class="btn btn-danger" value="Book it" style="width: 100%">
+              <%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
+                <%= f.input :dates, :as => :hidden %>
+                <%= f.submit "Book lesson", class: "btn btn-danger", style: "width: 100%" %>
+              <% end %>
             </form>
           </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-4" id="lesson_book">
-        <%= form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
 
-          <%= f.text_field :date, placeholder: "Choose your date" %>
 
-          <%= f.button "Book it", class: "btn btn-danger", style: "width: 100%" %>
-        <% end %>
-        </form>
       </div>
+
     </div>
   </div>
 
@@ -82,18 +83,33 @@
       </div>
     </div>
   </div>
-</div>
+</section>
+
 <% content_for(:js) do %>
-  <% javascript_tag do %>
-    $(document).ready(function(){
-      $('#meeting_date').datepicker({
-        format: "dd/mm/yyyy",
-        weekStart: 1,
-        daysOfWeekHighlighted: "<%= @lesson.disable_days %>",
-        daysOfWeekDisabled: "<%= @lesson.disable_days %>",
-        todayHighlight: true
+  <%= javascript_tag do %>
+    $('document').ready(function(){
+      $('.datepicker div').datepicker({
+        format: "mm/dd/yyyy",
+        clearBtn: true,
+        multidate: true,
+        daysOfWeekDisabled: "0",
+        todayHighlight: true,
+        startDate: "<%= @lesson.params_for_datepicker[:start_date] %>",
+        endDate: "<%= @lesson.params_for_datepicker[:end_date] %>",
+        datesDisabled: <%= raw @lesson.params_for_datepicker[:dates_disabled].to_json %>
+      });
+      $('.table-condensed').on('mouseleave', function(event) {
+        var dates = $('#datepicker_id').datepicker('getDates');
+        var dates_format = []
+
+        dates.forEach(function(date_string) {
+          var date = new Date(date_string);
+          var date_format = $.datepicker.formatDate('mm/dd/yy', date);
+          dates_format.push("\"" + date_format + "\"")
+        });
+        console.log(dates_format)
+        $('#meeting_dates').val('['+dates_format+']')
       });
     });
   <% end %>
 <% end %>
-</section>

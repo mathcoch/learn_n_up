@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'users/profile', to: 'users#show', as: :user
 
   resources :lessons, only: [:new, :create, :index, :show] do
+    collection do
+      get 'category/:category', to: "lessons#category"
+    end
     resources :meetings, only: [:create]
   end
 end

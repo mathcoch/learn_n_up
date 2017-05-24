@@ -26,6 +26,12 @@ class LessonsController < ApplicationController
     end
   end
 
+  def destroy
+    @lesson = Lesson.find(params["id"])
+    @lesson.destroy
+    redirect_to user_path
+  end
+
   def category
     @lessons = Lesson.where(category: params[:category])
   end

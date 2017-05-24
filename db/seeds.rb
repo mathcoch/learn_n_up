@@ -222,4 +222,17 @@ lesson = Lesson.create(
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 3)
 
+lesson = Lesson.create(
+   category:    'Language',
+   name: "Romanian theatre",
+   description: "A deep dive in Romian culture - Romian are not only thief !",
+   user_id: (1..10).to_a.sample,
+   img_url: 'https://avatars1.githubusercontent.com/u/25384564?v=3',
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 2)
+
 puts 'Finished!'

@@ -2,17 +2,16 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= @lesson.img_url %>); height: 50vh; background-position: center;">
 </div>
 <section class="lesson">
-  <div class="header-lesson">
     <div class="container">
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+      <div class="row" id="show-lesson">
+        <div class="col-xs-12 col-sm-6">
           <div class="header-lesson-details">
             <span class="card-category"><%= @lesson.category %></span>
             <div class="header-lesson-teacher  text-center">
               <!--<img class="img-circle" width="80" src="../images/romain.jpeg" />
               <p><%= @lesson.user.first_name %> <%= @lesson.user.last_name %></p>
-            --></div>
+            -->
+            </div>
             <div class="header-lesson-name">
               <h1><%= @lesson.name %></h1>
               <i class="fa fa-star" style="color: #76E2F4"></i>
@@ -22,52 +21,10 @@
               <i class="fa fa-star" style="color: #666666"></i>
             </div>
           </div>
-        </div>
-
-        <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
-
-          <div class="col-xs-12 col-sm-4" style="z-index: 1;">
-            <div class="book-form">
-              <div class='datepicker' >
-                <div id="datepicker_id"></div>
-              </div>
-              <form action="<%= lesson_meetings_path(@lesson) %>" method="post" >
-                <%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
-                  <%= f.input :dates, :as => :hidden %>
-                  <%= f.submit "Book lesson", class: "btn btn-danger", style: "width: 100%" %>
-                <% end %>
-              </form>
-            </div>
-          </div>
-
-        <% else %>
-
-          <div class="col-xs-12 col-sm-4" style="z-index: 1;">
-            <div class="book-form">
-              <h2>No availabilities</h2>
-            </div>
-          </div>
-
-        <% end %>
-
-
-      </div>
-
-    </div>
-  </div>
-
-  <div id="lesson-description">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-          <h2>About this lesson</h2>
-          <div class="lesson-description">
+          <div id="lesson-description">
+            <h2>About this lesson</h2>
             <%= @lesson.description %>
-          </div>
-
-          <hr>
-          <div class="row" id="lesson-data">
-            <div class="col-xs-12 col-sm-3">
+            <div class="lesson-data">
               Lesson details
             </div>
             <div class="col-xs-12 col-sm-7">
@@ -77,10 +34,7 @@
                 <li>Location:  <strong>Address (à faire en P2)</strong></li>
               </ul>
             </div>
-          </div>
-          <hr>
-          <div class="row" id="flat-data">
-            <div class="col-xs-12 col-sm-3">
+            <div class="flat-data">
               Material needed (à faire en P2)
             </div>
             <div class="col-xs-12 col-sm-7">
@@ -92,7 +46,63 @@
             </div>
           </div>
         </div>
+        <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
+
+          <div class="col-xs-12 col-sm-6">
+            <div class="book-form">
+              <div class='datepicker' >
+                <div id="datepicker_id"></div>
+              </div>
+              <form action="<%= lesson_meetings_path(@lesson) %>" method="post" >
+                <%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
+                  <%= f.input :dates, :as => :hidden %>
+                  <%= f.submit "Book lesson", class: "btn btn-blue" %>
+                <% end %>
+              </form>
+            </div>
+          </div>
+
+        <% else %>
+
+          <div class="col-xs-12 col-sm-6">
+            <div class="book-form">
+              <h2>No availabilities</h2>
+            </div>
+          </div>
+
+        <% end %>
+
       </div>
+  </div>
+</section>
+<section class="section-gray similar-lesson">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2 class="section-title">You might be interest in</h2>
+      </div>
+      <% @lesson_category.each do |lesson| %>
+        <div class="lesson">
+          <div class="col-sm-3 lesson-card">
+              <a class="card" href="lessons/">
+              <span class="card-category ">
+                <%= lesson.category %>
+              </span>
+              <h2 class="card-name">
+                  <%= lesson.name %>
+              </h2>
+              <span class="lesson-informationLabel">
+                <i class="lesson-informationIcon  icon-calendar3"></i>
+                6 mois | Paris
+              </span>
+              <p class="card-description">
+                <%= lesson.description[0..120] + "..." %>
+              </p>
+              <p class="show-lesson show-lesson-cat-">Show lesson</p>
+            </a>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>

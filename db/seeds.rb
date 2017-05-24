@@ -100,7 +100,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","05/28/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -112,7 +113,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -124,7 +126,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -136,7 +139,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -148,7 +152,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 
@@ -161,7 +166,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -173,7 +179,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -185,7 +192,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -197,7 +205,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 lesson = Lesson.create(
@@ -209,7 +218,8 @@ lesson = Lesson.create(
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
-   city: "#{Faker::Address.city}"
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
    )
 
 puts 'Finished!'

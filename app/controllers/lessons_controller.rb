@@ -14,7 +14,7 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(post_params)
+    @lesson = Lesson.new(meeting_params)
     @lesson.user = current_user
     if @lesson.save
       redirect_to lessons_path
@@ -29,8 +29,8 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
   end
 
-  def post_params
-    params.require(:lesson).permit(:name, :category, :description, :level, :duration, :address, :city, :days => [])
+  def meeting_params
+    params.require(:lesson).permit(:name, :category, :description, :level, :duration, :address, :city, :dates)
   end
 
 end

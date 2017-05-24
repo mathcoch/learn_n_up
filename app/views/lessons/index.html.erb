@@ -55,7 +55,7 @@
                     <i class="lesson-informationIcon  icon-calendar3"></i>
                     6 mois | Paris
                   </span>
-                  <p class="card-description"><%= lesson.description %></p>
+                  <p class="card-description"><%= lesson.description[0..120] + " ..." %></p>
                   <p class="show-lesson show-lesson-cat-<%= lesson.category_number %> ">Show lesson</p><!--
                   <img class="card-user avatar avatar-large" src="https://unsplash.it/100/100"> -->
                 </a>

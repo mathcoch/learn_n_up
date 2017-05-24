@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :user
+  has_many :meetings, dependent: :destroy
   include AlgoliaSearch
 
   algoliasearch do

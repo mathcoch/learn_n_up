@@ -1,7 +1,14 @@
 /* -------------------------------------
  * Your CSS code for flash notices and alerts
 * ------------------------------------- */
-
+.alert,
+.notice{
+  position: fixed;
+  z-index: 2;
+  color:white;
+  height: 40px;
+  width: 100%;
+}
 .alert {
   margin: 0;
   text-align: center;

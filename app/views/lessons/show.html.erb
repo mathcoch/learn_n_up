@@ -105,7 +105,7 @@
   </div>
 </section>
 
-<% content_for(:js) do %>
+<% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){
       $('.datepicker div').datepicker({

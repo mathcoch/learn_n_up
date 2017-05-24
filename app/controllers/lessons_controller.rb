@@ -1,5 +1,6 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show]
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @lessons = Lesson.all
@@ -27,6 +28,10 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params["id"])
     @lesson.destroy
     redirect_to user_path
+  end
+
+  def category
+    @lessons = Lesson.where(category: params[:category])
   end
 
   private

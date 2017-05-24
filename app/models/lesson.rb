@@ -1,6 +1,11 @@
 class Lesson < ApplicationRecord
   belongs_to :user
   has_many :meetings, dependent: :destroy
+  include AlgoliaSearch
+
+  algoliasearch do
+    attribute :name, :category, :description
+  end
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']
   LEVELS = ['Beginner', 'Advanced', 'Pro']

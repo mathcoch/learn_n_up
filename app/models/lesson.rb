@@ -6,7 +6,7 @@ class Lesson < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :name, :category, :description
+    attribute :name, :category, :category_number, :user_id, :description
   end
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']
@@ -18,7 +18,7 @@ class Lesson < ApplicationRecord
   validates :level, inclusion: LEVELS
   validates :duration, inclusion: DURATION
 
-  def category_number
+  def category_number_method
     CATEGORIES.index(self.category) + 1
   end
 

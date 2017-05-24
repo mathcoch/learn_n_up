@@ -101,8 +101,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","05/28/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","05/28/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 2)
 
 lesson = Lesson.create(
    category:    'Science',
@@ -114,8 +114,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 3)
 
 lesson = Lesson.create(
    category:    'Language',
@@ -127,8 +127,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 2)
 
 lesson = Lesson.create(
    category:    'Sport',
@@ -140,8 +140,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 6)
 
 lesson = Lesson.create(
    category:    'Science',
@@ -153,8 +153,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 3)
 
 
 lesson = Lesson.create(
@@ -167,8 +167,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 7)
 
 lesson = Lesson.create(
    category:    'Language',
@@ -180,8 +180,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 2)
 
 lesson = Lesson.create(
    category:    'Finance',
@@ -193,8 +193,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 7)
 
 lesson = Lesson.create(
    category:    'Sport',
@@ -206,8 +206,8 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 6)
 
 lesson = Lesson.create(
    category:    'Science',
@@ -219,7 +219,7 @@ lesson = Lesson.create(
    duration: rand(0..8),
    address: "#{Faker::Address.street_address}",
    city: "#{Faker::Address.city}",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"]
-   )
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 3)
 
 puts 'Finished!'

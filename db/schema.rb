@@ -20,14 +20,15 @@ ActiveRecord::Schema.define(version: 20170524110035) do
     t.string   "category"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "img_url"
     t.string   "level"
     t.string   "dates"
     t.integer  "duration"
     t.string   "address"
     t.string   "city"
+    t.string   "category_number"
     t.float    "latitude"
     t.float    "longitude"
     t.index ["user_id"], name: "index_lessons_on_user_id", using: :btree

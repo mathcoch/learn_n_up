@@ -1,35 +1,38 @@
-<div class="container">
-  <div class="row text-center">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <h2>Create your lesson</h2>
+<div class="grey-background-page">
+    <div class="row text-center banner-create banner">
+      <div class="col-xs-12 title_create">
+        <h5>ready to teach ?</h5>
+        <h2 class="title_create_2">Create your lesson</h2>
+        <h5>and share your knowledge with our students !</h5>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <%= simple_form_for @lesson do |f| %>
-        <%= f.input :name, label: "Title" %>
-        <%= f.input :description, as: :text %>
-        <%= f.input :category, collection: Lesson::CATEGORIES %>
-        <%= f.input :duration, collection: Lesson::DURATION, label: "Duration in hours" %>
-        <%= f.input :level, collection: Lesson::LEVELS %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 col-md-offset-3 form_background padding title_form">
+        <%= simple_form_for @lesson do |f| %>
+          <%= f.input :name, label: "Title", placeholder: "a few imagination" %>
+          <%= f.input :description, as: :text, placeholder: "be clear and concise"%>
+          <%= f.input :category, collection: Lesson::CATEGORIES, placeholder: "wow a choice"%>
+          <%= f.input :duration, collection: Lesson::DURATION, label: "Duration in hours", placeholder: "longer is better"%>
+          <%= f.input :level, collection: Lesson::LEVELS, placeholder: "do it accessible"%>
 
-            <div class='datepicker' >
-              <div id="datepicker_id"></div>
-            </div>
+              <div class='datepicker' >
+                <div id="datepicker_id"></div>
+              </div>
 
-        <%= f.input :dates, as: :hidden %>
+          <%= f.input :dates, as: :hidden %>
 
-        <%= f.input :address %>
-        <%= f.input :city %>
-        <%= f.button :submit %>
-      <% end %>
-      <%= link_to "Back to the lessons", lessons_path %>
+          <%= f.input :address, placeholder: "where will be the meeting..." %>
+          <%= f.button :submit %>
+        <% end %>
+        <%= link_to "Back to the lessons", lessons_path %>
+      </div>
     </div>
   </div>
 </div>
 
 
-<% content_for(:js) do %>
+<% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){
       $('.datepicker div').datepicker({

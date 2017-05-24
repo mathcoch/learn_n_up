@@ -1,22 +1,24 @@
 class Lesson < ApplicationRecord
   belongs_to :user
   has_many :meetings, dependent: :destroy
+  after_validation :geocode, if: :address_changed?
+  geocoded_by :address
   include AlgoliaSearch
 
   algoliasearch do
-    attribute :name, :category, :description
+    attribute :name, :category, :category_number, :user_id, :description
   end
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']
   LEVELS = ['Beginner', 'Advanced', 'Pro']
   DURATION = (0..8)
 
-  validates :name, :description, :user, :address, :city, presence: true
+  validates :name, :description, :user, :address, presence: true
   validates :category, inclusion: CATEGORIES
   validates :level, inclusion: LEVELS
   validates :duration, inclusion: DURATION
 
-  def category_number
+  def category_number_method
     CATEGORIES.index(self.category) + 1
   end
 

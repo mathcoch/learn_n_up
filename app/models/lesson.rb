@@ -1,6 +1,8 @@
 class Lesson < ApplicationRecord
   belongs_to :user
   has_many :meetings, dependent: :destroy
+  after_validation :geocode, if: :address_changed?
+  geocoded_by :address
   include AlgoliaSearch
 
   algoliasearch do
@@ -11,7 +13,7 @@ class Lesson < ApplicationRecord
   LEVELS = ['Beginner', 'Advanced', 'Pro']
   DURATION = (0..8)
 
-  validates :name, :description, :user, :address, :city, presence: true
+  validates :name, :description, :user, :address, presence: true
   validates :category, inclusion: CATEGORIES
   validates :level, inclusion: LEVELS
   validates :duration, inclusion: DURATION

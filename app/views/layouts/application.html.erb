@@ -16,6 +16,7 @@
     <p class="alert"><%= alert %></p>
     <%= yield %>
     <%= render 'shared/footer' %>
+    <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
     <%= javascript_include_tag 'application' %>
     <%= yield(:js) %>
   </body>

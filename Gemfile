@@ -20,6 +20,9 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'bootstrap-datepicker-rails'
+gem "algoliasearch-rails"
+gem 'turbolinks', '~> 5'
+
 
 
 group :development, :test do

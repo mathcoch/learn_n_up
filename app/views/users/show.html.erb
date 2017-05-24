@@ -16,7 +16,9 @@
               <% current_user.lessons.each do |lesson| %>
                 <div class="product">
                   <div class="product-body">
-                    <h3><%= lesson.name %></h3>
+                    <%= link_to lesson_path(lesson) do %>
+                      <h3><%= lesson.name %></h3>
+                    <% end %>
                     <p> <%= lesson.description[0..120] + " ..." %></p>
                   </div>
                   <ul class="list-inline product-controls hidden-sm hidden-xs">

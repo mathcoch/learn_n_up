@@ -8,6 +8,7 @@ class LessonsController < ApplicationController
 
   def show
     @meeting = Meeting.new
+    @lesson_category = Lesson.where(category: @lesson.category)[0..3]
   end
 
   def new

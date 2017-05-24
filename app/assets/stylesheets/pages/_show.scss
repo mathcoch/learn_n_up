@@ -1,13 +1,73 @@
-section.lesson{
-  background: $gray-light;
+section{
   padding: 60px 0;
   position:relative;
+  overflow:hidden;
+  background: white;
+}
+section.lesson{
+  overflow:visible;
+  padding: 50px 0;
+}
+.lesson li strong{
+  color:$dark-blue;
+}
+.lesson li i{
+  margin-right:5px;
+}
+h2.section-title{
+  text-align:center;
+  margin-bottom:25px;
+  text-decoration: underline;
+}
+.section-gray{
+  background: $gray-light;
+  position:relative;
+  margin-top:65px;
+}
+.section-gray:before{
+  transform: skewY(3deg);
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
+  top: -45px;
+  left: 0;
+  right: 0;
+}
+#show-lesson{
+  padding:25px;
+  margin-top: -120px;
+  background:white;
+  box-shadow: rgba(121, 121, 121, 0.35) 1px 10px 15px;
 }
 .book-form{
-  padding:25px;
-  background:white;
-  position:absolute;
-  top: -160px;
+  text-align:right;
+  padding:50px;
+  margin:0 50px;
+  border-left: 2px solid $gray-light;
+}
+.datepicker{
+  width: 100%;
+}
+.table-condensed{
   width:100%;
-  box-shadow: rgba(121, 121, 121, 0.35) 1px 10px 15px;
+}
+.disabled.today{
+  background:$dark-blue;
+  color:white;
+}
+.btn{
+  padding:10px 25px 9px;
+  border-radius:4px;
+  color:#fff;
+  font-size:13px;
+  text-align:center;
+  letter-spacing: 1px;
+  text-transform:uppercase;
+  display: inline-block;
+}
+.btn-blue{
+  box-shadow:0 1px 3px 0 rgba(0,0,0,.15);
+  background-color:$blue;
 }

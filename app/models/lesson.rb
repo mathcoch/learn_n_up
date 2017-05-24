@@ -1,5 +1,6 @@
 class Lesson < ApplicationRecord
   belongs_to :user
+  has_many :meetings, dependent: :destroy
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']
   LEVELS = ['Beginner', 'Advanced', 'Pro']

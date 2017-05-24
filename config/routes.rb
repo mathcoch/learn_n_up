@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   get 'users/profile', to: 'users#show', as: :user
 
-  resources :lessons, only: [:new, :create, :index, :show] do
+  resources :lessons, only: [:new, :create, :index, :show, :destroy] do
     resources :meetings, only: [:create]
   end
+  resources :meetings, only: [:destroy]
 end

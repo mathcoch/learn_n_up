@@ -3,11 +3,13 @@
 * ------------------------------------- */
 .alert,
 .notice{
-  position: fixed;
-  z-index: 2;
-  color:white;
-  height: 40px;
-  width: 100%;
+  // top: 40px;
+  // position: fixed;
+  // z-index: 2;
+  // height: 40px;
+  // width: 100%;
+  // background-color: white;
+  // color: $gray-dark;
 }
 .alert {
   margin: 0;

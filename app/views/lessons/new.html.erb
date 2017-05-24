@@ -12,9 +12,13 @@
         <%= f.input :category, collection: Lesson::CATEGORIES %>
         <%= f.input :duration, collection: Lesson::DURATION, label: "Duration in hours" %>
         <%= f.input :level, collection: Lesson::LEVELS %>
-       <%= f.input :days, as: :check_boxes, item_wrapper_tag: :div,
-          collection: [["Monday", 1], ["Tuesday", 2], ["Wednesday", 3], ["Thursday", 4], ["Friday", 5], ["Saturday", 6], ["Sunday", 0]]
-           %>
+
+            <div class='datepicker' >
+              <div id="datepicker_id"></div>
+            </div>
+
+        <%= f.input :dates, as: :hidden %>
+
         <%= f.input :address %>
         <%= f.input :city %>
         <%= f.button :submit %>
@@ -23,3 +27,30 @@
     </div>
   </div>
 </div>
+
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+    $('document').ready(function(){
+      $('.datepicker div').datepicker({
+        format: "mm/dd/yyyy",
+        clearBtn: true,
+        multidate: true,
+        daysOfWeekDisabled: "0",
+        todayHighlight: true,
+        startDate: "<%= DateTime.now.strftime('%m/%d/%Y') %>",
+      });
+      $('.table-condensed').on('mouseleave', function(event) {
+        var dates = $('#datepicker_id').datepicker('getDates');
+        var dates_format = []
+
+        dates.forEach(function(date_string) {
+          var date = new Date(date_string);
+          var date_format = $.datepicker.formatDate('mm/dd/yy', date);
+          dates_format.push("\"" + date_format + "\"")
+        });
+        $('#lesson_dates').val('['+dates_format+']')
+      });
+    });
+  <% end %>
+<% end %>

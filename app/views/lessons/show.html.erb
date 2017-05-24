@@ -24,19 +24,31 @@
           </div>
         </div>
 
-        <div class="col-xs-12 col-sm-4" style="z-index: 1;">
-          <div class="book-form">
-            <div class='datepicker' >
-              <div id="datepicker_id"></div>
+        <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
+
+          <div class="col-xs-12 col-sm-4" style="z-index: 1;">
+            <div class="book-form">
+              <div class='datepicker' >
+                <div id="datepicker_id"></div>
+              </div>
+              <form action="<%= lesson_meetings_path(@lesson) %>" method="post" >
+                <%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
+                  <%= f.input :dates, :as => :hidden %>
+                  <%= f.submit "Book lesson", class: "btn btn-danger", style: "width: 100%" %>
+                <% end %>
+              </form>
             </div>
-            <form action="<%= lesson_meetings_path(@lesson) %>" method="post" >
-              <%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
-                <%= f.input :dates, :as => :hidden %>
-                <%= f.submit "Book lesson", class: "btn btn-danger", style: "width: 100%" %>
-              <% end %>
-            </form>
           </div>
-        </div>
+
+        <% else %>
+
+          <div class="col-xs-12 col-sm-4" style="z-index: 1;">
+            <div class="book-form">
+              <h2>No availabilities</h2>
+            </div>
+          </div>
+
+        <% end %>
 
 
       </div>
@@ -107,7 +119,6 @@
           var date_format = $.datepicker.formatDate('mm/dd/yy', date);
           dates_format.push("\"" + date_format + "\"")
         });
-        console.log(dates_format)
         $('#meeting_dates').val('['+dates_format+']')
       });
     });

@@ -29,7 +29,7 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting = Meeting.find(params["id"])
     @lesson = @meeting.lesson
-    @lesson.dates = @lesson.dates.split(',') +  @meeting.dates_array
+    @lesson.dates = (@lesson.dates.split(',') +  @meeting.dates.split(',')).join(',')
     @lesson.save
     @meeting.destroy
     redirect_to user_path

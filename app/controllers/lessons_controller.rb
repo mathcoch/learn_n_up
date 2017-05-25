@@ -15,6 +15,7 @@ class LessonsController < ApplicationController
 
   def show
     @meeting = Meeting.new
+    @review = Review.new
     @lesson_category = Lesson.where(category: @lesson.category)[0..3]
   end
 

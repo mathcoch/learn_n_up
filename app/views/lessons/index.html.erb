@@ -53,6 +53,8 @@
 
       </div>
     </div>
+
+
     <div class="container">
       <h3 class="description-title"><%= image_tag 'good.png', class:'description-image' %>Our latest reviews</h3>
         <div class="row">
@@ -91,6 +93,12 @@
           </ul>
         </div>
     </div>
+
+    <div class="container padded">
+      <h3 class="description-title"><%= image_tag 'map.png', class:'description-image' %>Our local presence</h3>
+      <div id="map" style="width: 100%; height: 300px;"></div>
+
+    </div>
   </body>
 </html>
 
@@ -118,3 +126,21 @@
       <a href="." class='clear-all'>Clear search</a>
     </div>
   </script>
+
+  <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+      $(document).ready(function() {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({ internal: { id: 'map' } }, function() {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(16);
+          }
+        });
+      });
+    <% end %>
+  <% end %>

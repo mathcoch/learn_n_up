@@ -1,12 +1,8 @@
-
     <div class="banner" style="/*background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'banner.jpg' %>);*/">
-        <video controls="controls" autoplay="autoplay" loop="loop"
-  width="233" height="147" poster="//www.cdn.com//video.png"
-  preload="auto" title="Video">
-            <source src="//www.cdn.com/video.mp4" type="video/mp4"/>
-            <source src="//www.cdn.com/video.ogv" type="video/ogv"/>
-            <source src="//www.cdn.com/video.webm" type="video/webm"/>
-        </video>
+
+      <video autoplay="autoplay" loop="loop" class="video" poster="<%= image_path 'poster-home-video.jpg' %>">
+        <source type="video/mp4" src="<%= video_path 'home-video.mp4' %>">
+      </video>
       <div class="banner-content">
         <h1 class="logo">
           <%= link_to root_path do %>
@@ -16,7 +12,6 @@
         </h1>
       </div>
     </div>
-
     <div class="wrapper-grey padded">
       <div class="container">
         <div class="row">
@@ -61,7 +56,7 @@
       </div>
     </div>
 
-
+  <div class="wrapper-white">
     <div class="container">
         <div class="row marged">
           <div class="col-md-6 align-right">
@@ -107,12 +102,30 @@
           </ul>
         </div>
     </div>
-
+  </div>
+  <div class="wrapper-white">
     <div class="container padded">
       <h3 class="description-title"><%= image_tag 'map.png', class:'description-image' %>Our local presence</h3>
-      <div id="map" style="width: 100%; height: 300px;"></div>
-
     </div>
+    <div id="map" style="width: 100%; height: 450px;"></div>
+  </div>
+  <script type="text/javascript">
+  var myLatlng = new google.maps.LatLng(48.852937,2.364178);
+
+  var myOptions = {
+      zoom: 14,
+      center: myLatlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: []
+  };
+
+  var map = new google.maps.Map(document.getElementById('map'), myOptions);
+  var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title:"You are here!"
+  });
+</script>
   </body>
 </html>
 
@@ -158,3 +171,7 @@
       });
     <% end %>
   <% end %>
+
+
+
+

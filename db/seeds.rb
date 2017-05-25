@@ -40,16 +40,16 @@ avatars = ['https://avatars2.githubusercontent.com/u/25741493?v=3',
  'https://avatars0.githubusercontent.com/u/25386031?v=3',
  'https://avatars0.githubusercontent.com/u/1410430?v=3']
 
-courses = ['http://lorempixel.com/1600/1000/business/1',
- 'http://lorempixel.com/1600/1000/business/2',
- 'http://lorempixel.com/1600/1000/business/3',
- 'http://lorempixel.com/1600/1000/business/4',
- 'http://lorempixel.com/1600/1000/business/5',
- 'http://lorempixel.com/1600/1000/business/6',
- 'http://lorempixel.com/1600/1000/business/7',
- 'http://lorempixel.com/1600/1000/business/8',
- 'http://lorempixel.com/1600/1000/business/9',
- 'http://lorempixel.com/1600/1000/business/10',]
+courses = ['https://lorempixel.com/1600/1000/business/1',
+ 'https://lorempixel.com/1600/1000/business/2',
+ 'https://lorempixel.com/1600/1000/business/3',
+ 'https://lorempixel.com/1600/1000/business/4',
+ 'https://lorempixel.com/1600/1000/business/5',
+ 'https://lorempixel.com/1600/1000/business/6',
+ 'https://lorempixel.com/1600/1000/business/7',
+ 'https://lorempixel.com/1600/1000/business/8',
+ 'https://lorempixel.com/1600/1000/business/9',
+ 'https://lorempixel.com/1600/1000/business/10',]
 
 
 puts 'Creating 10 fake users...'
@@ -76,22 +76,7 @@ end
 puts 'Finished!'
 
 
-puts 'Creating 10 fake lessons...'
-# 10.times do
-#  lesson = Lesson.create(
-#    category:    ['Language', 'Science', 'Sport', 'Finance'].sample,
-#    name: Faker::Artist.name,
-#    description: "#{Faker::Educator.course}",
-#    user_id: (1..10).to_a.sample,
-#    img_url: courses.sample,
-#    level:['Beginner', 'Advanced', 'Pro'].sample,
-#    duration: rand(0..8),
-#    address: "#{Faker::Address.street_address}",
-#    city: "#{Faker::Address.city}"
-#  )
-# end
-
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Language',
    name: "Learn mandarin basics",
    description: "Introductory Mandarin is the first in a series of six courses designed to teach you how to speak Mandarin Chinese. This course will introduce you to the basic language you will need to eat, live, and get around in Mandarin speaking countries.",
@@ -103,8 +88,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","05/28/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 2)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Science',
    name: "Climate Change",
    description: "Do you want to talk about climate change from an informed perspective? Are you interested in how global warming works? Climate change is the biggest challenge of our time, and climate science is critical to finding solutions. How can we make the best decisions about our present and future? By taking this course, you can be part of the global conversation.",
@@ -116,8 +103,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 3)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Language',
    name: "Conversational English Skills",
    description: "Are you finding it difficult to start the conversation, or find the right words when communicating in English? Do you know how to start and end conversations in a polite way? Do it through this 4h course.",
@@ -129,8 +118,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 2)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Sport',
    name: "Ethics of Sports",
    description: "While sport sometimes is dismissed as frivolous, it not only raises fundamental ethical questions, such as what counts as fair play, but is an important cultural phenomenon attracting the interests of millions of people around the globe. Love sports or hate them, their cultural role or influence cannot easily be dismissed.",
@@ -142,8 +133,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 6)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Science',
    name: "Data Science Orientation",
    description: "This is the first stop in the Data Science curriculum from Microsoft. It will help you get started with the program, plan your learning schedule, and connect with fellow students and teaching assistants.",
@@ -155,9 +148,11 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 3)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Finance',
    name: "Personal Finance",
    description: "Want to better understand investments? How credit works? How and why insurance products like life insurance, health insurance, and property insurance might be relevant for you? How to maximize your retirement savings? This course aims to make finding the answers to these questions, and many other similar questions, interesting and fun.",
@@ -169,8 +164,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 7)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Language',
    name: "French theatre",
    description: "Le théâtre classique du 17e siècle passe pour le sommet de l’art du théâtre en France. Ses trois représentants les plus connus, Corneille et Racine pour la tragédie et Molière pour la comédie comptent parmi les plus grands dramaturges européens de tous les temps, et Molière reste l’un des auteurs les plus joués dans le monde.",
@@ -182,8 +179,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 2)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Finance',
    name: "How to become a billionnaire?",
    description: "Are you involved in the development and execution of technical projects and eager to know what it takes to fund a project successfully? Would you like to be more in touch with the latest developments in project finance and able to use these to your advantage? If so, you’re in the right place!",
@@ -195,8 +194,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 7)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Sport',
    name: "Math in Sports",
    description: "In this course you will learn to use some mathematical tools that can help predict and analyze sporting performances and outcomes. This course will help coaches, players, and enthusiasts to make educated decisions about strategy, training, and execution.",
@@ -208,8 +209,10 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 6)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
-lesson = Lesson.create(
+lesson = Lesson.new(
    category:    'Science',
    name: "How to raise your kid?",
    description: "Developmental psychology is the study of an individual’s social, emotional, cognitive, and biological development through his or her lifespan. The focus of this course will be from infancy to later life.",
@@ -221,5 +224,22 @@ lesson = Lesson.create(
    city: "#{Faker::Address.city}",
    dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
    category_number: 3)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
+
+lesson = Lesson.new(
+   category:    'Language',
+   name: "Romanian theatre",
+   description: "A deep dive in Romian culture - Romian are not only thief !",
+   user_id: (1..10).to_a.sample,
+   img_url: 'https://avatars1.githubusercontent.com/u/25384564?v=3',
+   level:['Beginner', 'Advanced', 'Pro'].sample,
+   duration: rand(0..8),
+   address: "#{Faker::Address.street_address}",
+   city: "#{Faker::Address.city}",
+   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   category_number: 2)
+lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.save
 
 puts 'Finished!'

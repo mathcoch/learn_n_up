@@ -18,6 +18,7 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(meeting_params)
     @lesson.category_number = @lesson.category_number_method
+    @lesson.description_crop = @lesson.description[0..120] + ' ...'
     @lesson.user = current_user
     if @lesson.save
       redirect_to lessons_path

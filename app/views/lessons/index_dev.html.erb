@@ -48,20 +48,41 @@
           </div>
         </div>
 
-        <%= render 'cards' %>
-
+        <div class="text-center padded" id="newsletter">
+          <% if @lessons.empty? %>
+            <h3>No lessons available yet...</h3>
+            <p>Do you want to receive an email as soon as a new lesson is available?</p>
+            <form class="form-inline">
+              <input type="email" placeholder="your email" class="form-control">
+              <input type="submit" value="Get informed" class="btn btn-success btn-bordered btn-bordered-primary">
+            </form>          <% end %>
+          <div class="row">
+            <div id="lessons">
+              <% @lessons.each do |lesson| %>
+                <div class="lesson">
+                  <div class="col-sm-3 lesson-card">
+                    <a class="card" href="lessons/<%= lesson.id %>">
+                      <span class="card-category cat-<%= lesson.category_number %>"><%= lesson.category %></span>
+                      <h2 class="card-name"><%= lesson.name %></h2>
+                      <span class="lesson-informationLabel">
+                        <i class="lesson-informationIcon  icon-calendar3"></i>
+                        6 mois | Paris
+                      </span>
+                      <p class="card-description"><%= lesson.description[0..120] + '...' %></p>
+                      <p class="show-lesson show-lesson-cat-<%= lesson.category_number %>">Show lesson</p>
+                    </a>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
+
     <div class="container">
-        <div class="row marged">
-          <div class="col-md-6 align-right">
-            <%= image_tag 'good.png', class:'description-image' %>
-          </div>
-          <div class="col-md-6">
-            <h3 class="description-title align-left no-marged">Our latest reviews</h3>
-          </div>
-        </div>
+      <h3 class="description-title"><%= image_tag 'good.png', class:'description-image' %>Our latest reviews</h3>
         <div class="row">
           <ul >
             <div class="col-xs-12 col-sm-6">
@@ -98,30 +119,3 @@
           </ul>
         </div>
     </div>
-  </body>
-</html>
-
-  <!-- TEMPLATES -->
-  <script type="text/html" id="lesson-template">
-    <div class="lesson">
-      <div class="col-sm-3 lesson-card">
-          <a class="card" href="lessons/{{{objectID}}}">
-          <span class="card-category cat-{{{category_number}}}">{{{_highlightResult.category.value}}}</span>
-          <h2 class="card-name">{{{_highlightResult.name.value}}}</h2>
-          <span class="lesson-informationLabel">
-            <i class="lesson-informationIcon  icon-calendar3"></i>
-            6 mois | Paris
-          </span>
-          <p class="card-description">{{{_highlightResult.description_crop.value}}}</p>
-          <p class="show-lesson show-lesson-cat-{{{category_number}}}">Show lesson</p>
-        </a>
-      </div>
-    </div>
-  </script>
-
-  <script type="text/html" id="no-results-lesson-template">
-    <div id="no-results-message">
-      <p>We didn't find any profiles for the search <em>"{{query}}"</em>.</p>
-      <a href="." class='clear-all'>Clear search</a>
-    </div>
-  </script>

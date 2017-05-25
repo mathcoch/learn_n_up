@@ -8,6 +8,21 @@
 .description-image {
   width: 40px;
 }
+
+.description-image-small {
+  width: 30px;
+  margin-right: 3px;
+  margin-left: 3px;
+  padding: 2px;
+}
+
+.description-image-small-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+  padding: 2px;
+
+}
+
 .description-title {
   text-align: center;
   color: #311782;

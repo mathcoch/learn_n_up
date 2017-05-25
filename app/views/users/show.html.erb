@@ -13,12 +13,13 @@
             <% current_user.lessons.each do |lesson| %>
               <% lesson.meetings.each do |meeting|  %>
                 <div class="product">
+                  <%= image_tag meeting.user.img_url, alt: "avatar", class: "avatar" %>
                   <div class="product-body">
                       <h3><%= lesson.name %>  | <%= meeting.view_dates %></h3>
                     <p> <%= lesson.description[0..120] + " ..." %></p>
                   </div>
                   <ul class="list-inline product-controls hidden-sm hidden-xs">
-                      <%= link_to lesson_path(lesson), method: 'delete', class: 'product-delete-link' do %>
+                      <%= link_to meeting_path(meeting), method: 'delete', class: 'product-delete-link' do %>
                         <li><i class="fa fa-trash"></i></li>
                     <% end %>
                     </ul>
@@ -55,7 +56,7 @@
             <h2>Your meetings as a student</h2>
             <% current_user.meetings.each do |meeting| %>
                 <div class="product">
-                  <%= image_tag meeting.lesson.user.avatar_url, alt: "avatar", class: "avatar" %>
+                  <%= image_tag meeting.lesson.user.img_url, alt: "avatar", class: "avatar" %>
                   <div class='product-body'>
                     <h3><%= meeting.lesson.name %> | <%= meeting.view_dates %></h3>
                     <p><%= meeting.lesson.description %></p>

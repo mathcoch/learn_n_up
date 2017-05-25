@@ -4,6 +4,11 @@ class LessonsController < ApplicationController
 
   def index
     @lessons = Lesson.all
+    if Rails.env.production?
+      render :index
+    else
+      render :index_dev
+    end
   end
 
   def show

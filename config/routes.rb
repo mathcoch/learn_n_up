@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     resources :meetings, only: [:create]
     resources :reviews, only: [:create]
   end
-  resources :meetings, only: [:destroy]
+  resources :meetings, only: [:show, :destroy, :update]
 end

@@ -1,10 +1,16 @@
 .product {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 20px;
   border-radius: 3px;
   transition: all 0.15s ease;
   background-color: #F6F6F6;
+  margin-top: 10px;
+}
+
+.product a {
+  text-decoration: none;
 }
 
 /* Body design */
@@ -74,6 +80,33 @@
   transition: all 0.15s ease;
   border-color: transparent;
 }
+.product-validation {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  background-color: #F6F6F6;
+}
+.product-validation-body {
+  flex: 1 1 auto;
+  padding: 10px;
+    h4 {
+      font-weight: bold;
+      font-size: 16px;
+      color: black;
+    }
+}
+.validate:hover {
+  background: green;
+  cursor: pointer;
+}
+.decline:hover {
+  background: red;
+  cursor: pointer;
+}
+.product-red {
+  background-color: #FFD8D8;
+}
 
 /* Hover effects */
 .product:hover {
@@ -87,6 +120,21 @@
 .product-upvote-upvoted .product-arrow {
   border-bottom-color: #5898f1;
 }
+.product-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+.product-delete-link {
+  z-index: 5;
+}
+
 // .product:hover .product-upvote { transform: scale(1.2) }
 .product:hover .product-controls-hidden a { color: #E6E6E6 }
 .product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
+

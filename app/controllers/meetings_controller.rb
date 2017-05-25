@@ -14,6 +14,18 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def update
+    @meeting = Meeting.find(params["id"])
+    if params["validate"] == "true"
+      @meeting.validated = true
+      @meeting.save
+    elsif params["decline"] == "true"
+      @meeting.refused = true
+      @meeting.save
+    end
+    redirect_to user_path
+  end
+
   def destroy
     @meeting = Meeting.find(params["id"])
     @lesson = @meeting.lesson

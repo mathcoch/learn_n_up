@@ -31,28 +31,10 @@
   </div>
 </div>
 
-
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){
-      $('.datepicker div').datepicker({
-        format: "mm/dd/yyyy",
-        clearBtn: true,
-        multidate: true,
-        todayHighlight: true,
-        startDate: "<%= DateTime.now.strftime('%m/%d/%Y') %>",
-      });
-      $('.table-condensed').on('mouseleave', function(event) {
-        var dates = $('#datepicker_id').datepicker('getDates');
-        var dates_format = []
-
-        dates.forEach(function(date_string) {
-          var date = new Date(date_string);
-          var date_format = $.datepicker.formatDate('mm/dd/yy', date);
-          dates_format.push("\"" + date_format + "\"")
-        });
-        $('#lesson_dates').val('['+dates_format+']')
-      });
+      $('.title_create_2').addClass('hidden');
     });
   <% end %>
 <% end %>

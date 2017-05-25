@@ -9,14 +9,12 @@
       <div class="container">
         <div class="row" id="show-user">
           <div class="col-sm-8">
-            <h2>Your sessions as a teacher</h2>
-            <% if current_user.lessons.empty? %>
-              <%= 'no lessons' %>
-            <% else %>
-              <% current_user.lessons.each do |lesson| %>
+            <h2>Your mettings as a teacher</h2>
+            <% current_user.lessons.each do |lesson| %>
+              <% lesson.meetings.each do |meeting|  %>
                 <div class="product">
                   <div class="product-body">
-                      <h3><%= lesson.name %></h3>
+                      <h3><%= lesson.name %>  | <%= meeting.view_dates %></h3>
                     <p> <%= lesson.description[0..120] + " ..." %></p>
                   </div>
                   <ul class="list-inline product-controls hidden-sm hidden-xs">
@@ -30,30 +28,31 @@
             <% end %>
           </div>
           <div class="col-sm-4">
-             <h2>Your meetings</h2>
-             <% current_user.lessons.each do |lesson| %>
-              <% lesson.meetings.each do |meeting|  %>
-                 <% meeting.dates_array.each do |date| %>
-                   <div>
-                     <h3><%= date %></h3>
-                     <h4>Lesson : <%= meeting.lesson.name %></h4>
-                   </div>
-                 <% end %>
-               <% end %>
+             <h2>Your lessons</h2>
+             <% if current_user.lessons.empty? %>
+               <%= 'no lessons' %>
+             <% else %>
+                <% current_user.lessons.each do |lesson| %>
+                  <div class="product">
+                    <div class="product-body">
+                      <%= link_to lesson_path(lesson) do %>
+                        <h3><%= lesson.name %></h3>
+                      <% end %>
+                      <p> <%= lesson.description[0..50] + " ..." %></p>
+                    </div>
+                    <ul class="list-inline product-controls hidden-sm hidden-xs">
+                        <%= link_to lesson_path(lesson), method: 'delete' do %>
+                          <li><i class="fa fa-trash"></i></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
               <% end %>
-          <!--  <% current_user.meetings.each do |meeting| %>
-              <% meeting.dates_array.each do |date| %>
-                <div>
-                  <h3><%= date %></h3>
-                  <h4>Lesson : <%= meeting.lesson.name %></h4>
-                </div>
-              <% end %>
-            <% end %> -->
           </div>
         </div>
          <div class="row" id="show-user-2">
           <div class="col-sm-12">
-            <h2>Your sessions as a student</h2>
+            <h2>Your meetings as a student</h2>
             <% current_user.meetings.each do |meeting| %>
                 <div class="product">
                   <%= image_tag meeting.lesson.user.avatar_url, alt: "avatar", class: "avatar" %>

@@ -6,7 +6,7 @@ class MeetingsController < ApplicationController
     @meeting.lesson = @lesson
 
     if @meeting.save
-      @lesson.dates = JSON.parse(@lesson.dates) - JSON.parse(@meeting.dates)
+      @lesson.dates = (@lesson.dates.split(',') - @meeting.dates.split(',')).join(',')
       @lesson.save
       redirect_to lesson_path(@lesson)
     else
@@ -17,7 +17,7 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting = Meeting.find(params["id"])
     @lesson = @meeting.lesson
-    @lesson.dates = JSON.parse(@lesson.dates) +  @meeting.dates_array
+    @lesson.dates = @lesson.dates.split(',') +  @meeting.dates_array
     @lesson.save
     @meeting.destroy
     redirect_to user_path

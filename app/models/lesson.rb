@@ -26,7 +26,7 @@ class Lesson < ApplicationRecord
   end
 
   def params_for_datepicker
-    dates_in_array = JSON.parse(self.dates)
+    dates_in_array = self.dates.split(',')
     if dates_in_array.empty?
       date = DateTime.now.strftime('%m/%d/%Y')
       return {start_date: date, end_date: date, dates_disabled: date, alert: 'no availabilities'}
@@ -39,7 +39,6 @@ class Lesson < ApplicationRecord
 
       dates_range = (start_date .. end_date).map{ |day| day.strftime("%m/%d/%Y").squeeze(' ') }
       dates_disabled = dates_range - dates_in_array
-      dates_disabled.map { |date| "#{date}" }
 
       return {start_date: start_date.strftime('%m/%d/%Y'), end_date: end_date.strftime('%m/%d/%Y'), dates_disabled: dates_disabled, alert: 'ok'}
     end

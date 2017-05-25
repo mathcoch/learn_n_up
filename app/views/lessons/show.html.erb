@@ -73,6 +73,26 @@
       <% end %>
     </div>
 </section>
+
+
+    <style type="text/css">
+      body { margin: 0; }
+      #map {
+        display: flex;
+        height: 50vh;
+        width: 100%;
+      }
+    </style>
+
+<!-- The map will be drawn in this div -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="map" class="section-gray similar-lesson text-center"></div>
+    </div>
+  </div>
+</div>
+
 <section class="section-gray similar-lesson">
   <div class="container">
     <div class="row">
@@ -127,6 +147,20 @@
           dates_format.push("\"" + date_format + "\"")
         });
         $('#meeting_dates').val('['+dates_format+']')
+      });
+
+      var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers([
+          {
+            "lat": <%= @lesson.latitude %>,
+            "lng": <%= @lesson.longitude %>,
+            "infowindow": "Course: <%= @lesson.name %>"
+          },
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(14)
       });
     });
   <% end %>

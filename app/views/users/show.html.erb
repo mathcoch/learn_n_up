@@ -36,16 +36,15 @@
                 <% current_user.lessons.each do |lesson| %>
                   <div class="product">
                     <div class="product-body">
-                      <%= link_to lesson_path(lesson) do %>
                         <h3><%= lesson.name %></h3>
-                      <% end %>
                       <p> <%= lesson.description[0..50] + " ..." %></p>
                     </div>
                     <ul class="list-inline product-controls hidden-sm hidden-xs">
-                        <%= link_to lesson_path(lesson), method: 'delete' do %>
-                          <li><i class="fa fa-trash"></i></li>
+                      <%= link_to lesson_path(lesson), method: 'delete', class: 'product-delete-link' do %>
+                        <li><i class="fa fa-trash"></i></li>
                       <% end %>
                       </ul>
+                      <%= link_to "", lesson_path(lesson), class: 'product-link' %>
                     </div>
                   <% end %>
               <% end %>
@@ -62,10 +61,11 @@
                     <p><%= meeting.lesson.description %></p>
                   </div>
                   <ul class="list-inline product-controls hidden-sm hidden-xs">
-                    <%= link_to meeting_path(meeting), method: 'delete' do %>
+                    <%= link_to meeting_path(meeting), method: 'delete', class: 'product-delete-link' do %>
                       <li><i class="fa fa-trash"></i></li>
                   <% end %>
                   </ul>
+                  <%= link_to "", lesson_path(meeting.lesson), class: 'product-link' %>
                 </div>
             <% end %>
 

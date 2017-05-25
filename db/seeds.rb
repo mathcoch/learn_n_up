@@ -86,7 +86,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "21 rue Pierre Semard, 75009 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","05/28/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,05/28/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -101,7 +101,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "10 rue des Jeuneurs, 75002 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -116,7 +116,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "145 rue d'Aboukir, 75002 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -131,7 +131,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "30 rue Davy, 75017 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 6)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -146,7 +146,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "7 Rue de Casablanca, 75015 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -162,7 +162,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "17 avenue d'Eylau, 75016 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 7)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -177,7 +177,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "9 rue Ballu, 75009 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -192,7 +192,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "17 passage Hébrard, 75010 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 7)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -207,7 +207,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "9 rue des deux-ponts, 75004 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 6)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -222,7 +222,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "33 rue de Lappe, 75011 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save
@@ -237,7 +237,7 @@ lesson = Lesson.new(
    duration: rand(0..8),
    address: "54 rue Monge, 75005 Paris",
    city: "Paris",
-   dates: ["05/25/2017","05/26/2017","05/27/2017","06/01/2017","06/02/2017","06/03/2017"],
+   dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
 lesson.save

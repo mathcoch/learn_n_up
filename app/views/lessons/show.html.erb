@@ -162,25 +162,18 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){
-      $('.datepicker div').datepicker({
-        format: "mm/dd/yyyy",
-        clearBtn: true,
-        multidate: true,
-        todayHighlight: true,
-        startDate: "<%= @lesson.params_for_datepicker[:start_date] %>",
-        endDate: "<%= @lesson.params_for_datepicker[:end_date] %>",
-        datesDisabled: <%= raw @lesson.params_for_datepicker[:dates_disabled].to_json %>
-      });
-      $('.table-condensed').on('mouseleave', function(event) {
-        var dates = $('#datepicker_id').datepicker('getDates');
-        var dates_format = []
-
-        dates.forEach(function(date_string) {
-          var date = new Date(date_string);
-          var date_format = $.datepicker.formatDate('mm/dd/yy', date);
-          dates_format.push("\"" + date_format + "\"")
-        });
-        $('#meeting_dates').val('['+dates_format+']')
+      $(".datepicker div").datepicker({
+          format: "mm/dd/yyyy",
+          multidate: true,
+          todayHighlight: true,
+          calendarWeeks: true,
+          startDate: "<%= @lesson.params_for_datepicker[:start_date] %>",
+          endDate: "<%= @lesson.params_for_datepicker[:end_date] %>",
+          datesDisabled: <%= raw @lesson.params_for_datepicker[:dates_disabled].to_json %>
+      }).on("changeDate", function(e){
+          var dates = $(".datepicker div").data('datepicker').getFormattedDate('mm/dd/yyyy');
+          console.log(dates);
+          $('#meeting_dates').val(dates)
       });
 
       var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});

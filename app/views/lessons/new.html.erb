@@ -46,6 +46,17 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){
+      $(".datepicker div").datepicker({
+        format: "mm/dd/yyyy",
+        clearBtn: true,
+        multidate: true,
+        todayHighlight: true,
+        startDate: "<%= DateTime.now.strftime('%m/%d/%Y') %>",
+      }).on("changeDate", function(e){
+          var dates = $(".datepicker div").data('datepicker').getFormattedDate('mm/dd/yyyy');
+          console.log(dates);
+          $('#lesson_dates').val(dates)
+      });
       $('#music').on('click', function(event) {
         $('#lesson_category').val('Music');
         $('.list-inline li').removeClass('description-image-small-selected')

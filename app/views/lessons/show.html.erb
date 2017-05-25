@@ -74,6 +74,30 @@
     </div>
 </section>
 
+<% if !@reviews.empty? %>
+
+<section id="review">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="card-review">
+       <!--    <div class="add-review">
+            <a class="btn-add">
+              <%= image_tag("add.png", size: "40x40", alt: "Add btn") %>
+            </a>
+          </div> -->
+          <% @reviews.each do |review| %>
+            <%= review.rating %>
+            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %> | <span class="date"><%= review.updated_at %></span></h2>
+            <p class="content-review"><%= review.comment %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% end %>
 
     <style type="text/css">
       body { margin: 0; }

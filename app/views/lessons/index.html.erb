@@ -1,5 +1,12 @@
 
-    <div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'banner.jpg' %>);">
+    <div class="banner" style="/*background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'banner.jpg' %>);*/">
+        <video controls="controls" autoplay="autoplay" loop="loop"
+  width="233" height="147" poster="//www.cdn.com//video.png"
+  preload="auto" title="Video">
+            <source src="//www.cdn.com/video.mp4" type="video/mp4"/>
+            <source src="//www.cdn.com/video.ogv" type="video/ogv"/>
+            <source src="//www.cdn.com/video.webm" type="video/webm"/>
+        </video>
       <div class="banner-content">
         <h1 class="logo">
           <%= link_to root_path do %>

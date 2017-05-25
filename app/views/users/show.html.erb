@@ -12,28 +12,30 @@
             <h2>Your mettings as a teacher</h2>
             <% current_user.lessons.each do |lesson| %>
               <% lesson.meetings.each do |meeting|  %>
-                <div class="product">
-                  <%= image_tag meeting.user.img_url, alt: "avatar", class: "avatar" %>
-                  <div class="product-body">
-                      <h3><%= lesson.name %>  | <%= meeting.view_dates %></h3>
-                    <p> <%= lesson.description[0..120] + " ..." %></p>
-                  </div>
-                  <ul class="list-inline product-controls hidden-sm hidden-xs">
-                      <%= link_to meeting_path(meeting), method: 'delete', class: 'product-delete-link' do %>
-                        <li><i class="fa fa-trash"></i></li>
-                    <% end %>
-                    </ul>
-                  <%= link_to "", lesson_path(lesson), class: 'product-link' %>
-                  </div>
-                    <% if meeting.validated == false %>
-                    <div class="product-validation text-center">
-                      <%= link_to meeting_path(meeting, validate: true), method: 'patch', class: 'product-validation-body validate' do %>
-                        <div>Validate</div>
-                      <% end %>
-                      <%= link_to meeting_path(meeting, decline: true), method: 'patch', class: 'product-validation-body decline' do %>
-                        <div>Decline</div>
-                      <% end %>
+                <% if meeting.refused == false %>
+                  <div class="product<%= ' product-red' if meeting.validated == false %>">
+                    <%= image_tag meeting.user.img_url, alt: "avatar", class: "avatar" %>
+                    <div class="product-body">
+                        <h3><%= lesson.name %>  | <%= meeting.view_dates %></h3>
+                      <p> <%= lesson.description[0..120] + " ..." %></p>
                     </div>
+                    <ul class="list-inline product-controls hidden-sm hidden-xs">
+                        <%= link_to meeting_path(meeting), method: 'delete', class: 'product-delete-link' do %>
+                          <li><i class="fa fa-trash"></i></li>
+                      <% end %>
+                      </ul>
+                    <%= link_to "", lesson_path(lesson), class: 'product-link' %>
+                    </div>
+                      <% if meeting.validated == false %>
+                      <div class="product-validation text-center">
+                        <%= link_to meeting_path(meeting, validate: true), method: 'patch', class: 'product-validation-body validate' do %>
+                          <div><h4>Validate</h4></div>
+                        <% end %>
+                        <%= link_to meeting_path(meeting, decline: true), method: 'patch', class: 'product-validation-body decline' do %>
+                          <div><h4>Decline</h4></div>
+                        <% end %>
+                      </div>
+                    <% end %>
                   <% end %>
                 <% end %>
             <% end %>
@@ -64,9 +66,14 @@
           <div class="col-sm-12">
             <h2>Your meetings as a student</h2>
             <% current_user.meetings.each do |meeting| %>
-                <div class="product">
+                <div class="product<%= ' product-red' if (meeting.refused || meeting.validated == false) %>">
                   <%= image_tag meeting.lesson.user.img_url, alt: "avatar", class: "avatar" %>
                   <div class='product-body'>
+                    <% if meeting.refused %>
+                      <h3 style="color: red">Refused</h3>
+                    <% elsif meeting.validated == false %>
+                      <h3 style="color: red">Waiting for approval</h3>
+                    <% end %>
                     <h3><%= meeting.lesson.name %> | <%= meeting.view_dates %></h3>
                     <p><%= meeting.lesson.description %></p>
                   </div>

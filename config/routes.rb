@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     end
     resources :meetings, only: [:create]
   end
-  resources :meetings, only: [:destroy]
+  resources :meetings, only: [:show, :destroy, :update]
 end

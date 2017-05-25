@@ -25,6 +25,16 @@
                     </ul>
                   <%= link_to "", lesson_path(lesson), class: 'product-link' %>
                   </div>
+                    <% if meeting.validated == false %>
+                    <div class="product-validation text-center">
+                      <%= link_to meeting_path(meeting, validate: true), method: 'patch', class: 'product-validation-body validate' do %>
+                        <div>Validate</div>
+                      <% end %>
+                      <%= link_to meeting_path(meeting, decline: true), method: 'patch', class: 'product-validation-body decline' do %>
+                        <div>Decline</div>
+                      <% end %>
+                    </div>
+                  <% end %>
                 <% end %>
             <% end %>
           </div>

@@ -6,6 +6,11 @@
   border-radius: 3px;
   transition: all 0.15s ease;
   background-color: #F6F6F6;
+  margin-top: 10px;
+}
+
+.product a {
+  text-decoration: none;
 }
 
 /* Body design */
@@ -74,6 +79,25 @@
   font-size: 15px;
   transition: all 0.15s ease;
   border-color: transparent;
+}
+.product-validation {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  transition: all 0.15s ease;
+  background-color: #F6F6F6;
+}
+.product-validation-body {
+  flex: 1 1 auto;
+  padding: 10px;
+}
+.validate:hover {
+  background: green;
+  cursor: pointer;
+}
+.decline:hover {
+  background: red;
+  cursor: pointer;
 }
 
 /* Hover effects */

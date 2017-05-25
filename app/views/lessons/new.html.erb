@@ -12,7 +12,19 @@
         <%= simple_form_for @lesson do |f| %>
           <%= f.input :name, label: "Title", placeholder: "a few imagination" %>
           <%= f.input :description, as: :text, placeholder: "be clear and concise"%>
-          <%= f.input :category, collection: Lesson::CATEGORIES, placeholder: "wow a choice"%>
+            <div class='category'>
+              <h5 class="title_form"><strong>Category</strong> </h5>
+              <ul class="list-inline">
+                <li id="music"><%= image_tag 'music-cat.png', class:'description-image-small' %></li>
+                <li id="science"><%= image_tag 'science-cat.png', class:'description-image-small' %></li>
+                <li id="culture"><%= image_tag 'culture-cat.png', class:'description-image-small' %></li>
+                <li id="finance"><%= image_tag 'finance-cat.png', class:'description-image-small' %></li>
+                <li id="language"><%= image_tag 'language-cat.png', class:'description-image-small' %></li>
+                <li id="sport"><%= image_tag 'sport-cat.png', class:'description-image-small' %></li>
+                <li id="startup"><%= image_tag 'startup-cat.png', class:'description-image-small' %></li>
+              </ul>
+            </div>
+          <%= f.input :category, collection: Lesson::CATEGORIES, placeholder: "wow a choice", as: :hidden%>
           <%= f.input :duration, collection: Lesson::DURATION, label: "Duration in hours", placeholder: "longer is better"%>
           <%= f.input :level, collection: Lesson::LEVELS, placeholder: "do it accessible"%>
 
@@ -31,27 +43,43 @@
   </div>
 </div>
 
-
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){
-      $('.datepicker div').datepicker({
-        format: "mm/dd/yyyy",
-        clearBtn: true,
-        multidate: true,
-        todayHighlight: true,
-        startDate: "<%= DateTime.now.strftime('%m/%d/%Y') %>",
+      $('#music').on('click', function(event) {
+        $('#lesson_category').val('Music');
+        $('.list-inline li').removeClass('description-image-small-selected')
+        $('#music').addClass('description-image-small-selected')
       });
-      $('.table-condensed').on('mouseleave', function(event) {
-        var dates = $('#datepicker_id').datepicker('getDates');
-        var dates_format = []
-
-        dates.forEach(function(date_string) {
-          var date = new Date(date_string);
-          var date_format = $.datepicker.formatDate('mm/dd/yy', date);
-          dates_format.push("\"" + date_format + "\"")
-        });
-        $('#lesson_dates').val('['+dates_format+']')
+      $('#science').on('click', function(event) {
+        $('#lesson_category').val('Science')
+        $('.list-inline li').removeClass('description-image-small-selected')
+        $('#science').addClass('description-image-small-selected')
+      });
+      $('#culture').on('click', function(event) {
+        $('#lesson_category').val('Culture')
+        $('.list-inline li').removeClass('description-image-small-selected')
+        $('#culture').addClass('description-image-small-selected')
+      });
+      $('#finance').on('click', function(event) {
+        $('#lesson_category').val('Finance')
+        $('.list-inline li').removeClass('description-image-small-selected')
+        $('#finance').addClass('description-image-small-selected')
+      });
+      $('#language').on('click', function(event) {
+        $('#lesson_category').val('Language')
+        $('.list-inline li').removeClass('description-image-small-selected')
+        $('#language').addClass('description-image-small-selected')
+      });
+      $('#sport').on('click', function(event) {
+        $('#lesson_category').val('Sport')
+        $('.list-inline li').removeClass('description-image-small-selected')
+        $('#sport').addClass('description-image-small-selected')
+      });
+      $('#startup').on('click', function(event) {
+        $('#lesson_category').val('Entrepreneurship')
+        $('.list-inline li').removeClass('description-image-small-selected')
+        $('#startup').addClass('description-image-small-selected')
       });
     });
   <% end %>

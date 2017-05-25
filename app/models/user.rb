@@ -1,8 +1,7 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :lessons
   has_many :meetings
+  has_many :reviews
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -13,6 +12,11 @@ class User < ApplicationRecord
 
   def avatar_url
     facebook_picture_url || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png"
+  end
+
+  def has_done_lesson(lesson)
+    self.meetings.map { |meeting| meeting.lesson == lesson }
+                 .include? (true)
   end
 
 

@@ -73,6 +73,56 @@
       <% end %>
     </div>
 </section>
+
+
+<section id="review">
+  <div class="container">
+    <div class="row">
+
+      <% if current_user.has_done_lesson(@lesson) %>
+        <div class="col-xs-6">
+          <div class="add-review card-review">
+            <a class="btn-add">
+              <%= image_tag("add.png", size: "40x40", alt: "Add btn") %>
+            </a>
+          </div>
+        </div>
+      <% end %>
+
+    <% if !@reviews.empty? %>
+      <% @reviews.each do |review| %>
+        <div class="col-xs-6">
+          <div class="card-review">
+            <%= review.rating %>
+            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %> | <span class="date"><%= review.updated_at %></span></h2>
+            <p class="content-review"><%= review.comment %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</section>
+
+
+    <style type="text/css">
+      body { margin: 0; }
+      #map {
+        display: flex;
+        height: 50vh;
+        width: 100%;
+      }
+    </style>
+
+<!-- The map will be drawn in this div -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div id="map" class="section-gray similar-lesson text-center"></div>
+    </div>
+  </div>
+</div>
+
 <section class="section-gray similar-lesson">
   <div class="container">
     <div class="row">
@@ -103,6 +153,10 @@
       <% end %>
     </div>
   </div>
+
+<%= render 'form' %>
+
+
 </section>
 
 <% content_for(:after_js) do %>
@@ -127,6 +181,20 @@
           dates_format.push("\"" + date_format + "\"")
         });
         $('#meeting_dates').val('['+dates_format+']')
+      });
+
+      var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
+      handler.buildMap({ internal: { id: 'map' } }, function(){
+        markers = handler.addMarkers([
+          {
+            "lat": <%= @lesson.latitude %>,
+            "lng": <%= @lesson.longitude %>,
+            "infowindow": "Course: <%= @lesson.name %>"
+          },
+        ]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        handler.getMap().setZoom(14)
       });
     });
   <% end %>

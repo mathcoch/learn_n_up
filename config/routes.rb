@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get 'category/:category', to: "lessons#category"
     end
     resources :meetings, only: [:create]
+    resources :reviews, only: [:create]
   end
   resources :meetings, only: [:show, :destroy, :update]
 end

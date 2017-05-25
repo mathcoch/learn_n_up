@@ -8,7 +8,7 @@
     <div class="wrapper-grey padded">
       <div class="container">
         <div class="row" id="show-user">
-          <div class="col-sm-8">
+          <div class="col-sm-8"> <%= @count %>
             <h2>Your mettings as a teacher</h2>
             <% current_user.lessons.each do |lesson| %>
               <% lesson.meetings.each do |meeting|  %>

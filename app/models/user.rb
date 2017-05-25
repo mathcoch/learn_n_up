@@ -14,6 +14,11 @@ class User < ApplicationRecord
     facebook_picture_url || "https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png"
   end
 
+  def has_done_lesson(lesson)
+    self.meetings.map { |meeting| meeting.lesson == lesson }
+                 .include? (true)
+  end
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)

@@ -6,7 +6,7 @@ $(document).ready(function() {
     google.maps.event.addDomListener(lesson_address, 'keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault(); // Do not submit the form on Enter.
-      }
+      };
     });
-  }
+  };
 });

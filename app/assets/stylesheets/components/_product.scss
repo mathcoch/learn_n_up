@@ -1,4 +1,5 @@
 .product {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 20px;
@@ -87,6 +88,21 @@
 .product-upvote-upvoted .product-arrow {
   border-bottom-color: #5898f1;
 }
+.product-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+.product-delete-link {
+  z-index: 5;
+}
+
 // .product:hover .product-upvote { transform: scale(1.2) }
 .product:hover .product-controls-hidden a { color: #E6E6E6 }
 .product-upvote:hover .product-arrow { border-bottom: 9px solid #5898f1 }
+

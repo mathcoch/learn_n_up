@@ -3,7 +3,7 @@
 //= require jquery-ui
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require underscore
-//= require gmaps/google
 //= require bootstrap-datepicker
+//= require gmaps/google
+//= require underscore
 //= require_tree .

@@ -22,14 +22,15 @@
      -moz-transition-duration: 0.5s;
      -o-transition-duration: 0.5s;
  }
- footer .logo{
+
+ #footer .logo img {
   width: 60px;
  }
- footer p{
+ #footer p{
   color:$dark-blue;
  }
  #social-fb {
-     color: $light-blue;
+     color: $light-blue ;
  }
  #social-tw {
      color: $light-blue;

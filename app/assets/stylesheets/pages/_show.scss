@@ -88,3 +88,15 @@ h2.section-title{
   box-shadow:0 1px 3px 0 rgba(0,0,0,.15);
   background-color:$blue;
 }
+.content-review:before{
+  content: "“ ";
+  color: $dark-blue;
+  font-weight:900;
+  font-size:30px;
+}
+.content-review:after{
+  content: " ”";
+  color: $dark-blue;
+  font-weight:900;
+  font-size:30px;
+}

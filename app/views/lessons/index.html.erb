@@ -1,21 +1,4 @@
-    <div class="banner">
-      <video autoplay="autoplay" loop="loop" class="video" poster="<%= image_path 'poster-home-video.jpg' %>">
-        <source type="video/mp4" src="<%= video_path 'video-1.mp4' %>">
-      </video>
-      <div class="banner-content">
-        <h1 class="logo">
-          <%= link_to root_path do %>
-            <%= image_tag "logo-large.png" %>
-          <% end %>
-          <p>Learn what ever, whenever... that's it !</p>
-        </h1>
-      </div>
-    </div>
-    <div class="wrapper-grey padded">
-      <div class="container">
-        <div class="row">
-          <div class="description">
-            <div class="col-xs-8 col-sm-4">
+
 <div class="banner">
   <video autoplay="autoplay" loop="loop" class="video" poster="<%= image_path 'poster-home-video.jpg' %>">
     <source type="video/mp4" src="<%= video_path 'video-1.mp4' %>">
@@ -117,22 +100,6 @@
       </ul>
     </div>
   </div>
-  <div class="wrapper-white">
-    <div class="container padded">
-      <h3 class="description-title"><%= image_tag 'map.png', class:'description-image' %>Our local presence</h3>
-    </div>
-    <div id="map" style="width: 100%; height: 300px;"></div>
-  </div>
-  <script type="text/javascript">
-  var myLatlng = new google.maps.LatLng(48.852937,2.364178);
-
-  var myOptions = {
-      zoom: 14,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      styles: []
-  };
-  </script>
 </div>
 
 <div class="wrapper-white">

@@ -81,7 +81,6 @@ lesson = Lesson.new(
    name: "Learn mandarin basics",
    description: "Introductory Mandarin is the first in a series of six courses designed to teach you how to speak Mandarin Chinese. This course will introduce you to the basic language you will need to eat, live, and get around in Mandarin speaking countries.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "21 rue Pierre Semard, 75009 Paris",
@@ -89,6 +88,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,05/28/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -96,7 +96,6 @@ lesson = Lesson.new(
    name: "Climate Change",
    description: "Do you want to talk about climate change from an informed perspective? Are you interested in how global warming works? Climate change is the biggest challenge of our time, and climate science is critical to finding solutions. How can we make the best decisions about our present and future? By taking this course, you can be part of the global conversation.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "10 rue des Jeuneurs, 75002 Paris",
@@ -104,6 +103,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -111,7 +111,6 @@ lesson = Lesson.new(
    name: "Conversational English Skills",
    description: "Are you finding it difficult to start the conversation, or find the right words when communicating in English? Do you know how to start and end conversations in a polite way? Do it through this 4h course.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "145 rue d'Aboukir, 75002 Paris",
@@ -119,6 +118,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -126,7 +126,6 @@ lesson = Lesson.new(
    name: "Ethics of Sports",
    description: "While sport sometimes is dismissed as frivolous, it not only raises fundamental ethical questions, such as what counts as fair play, but is an important cultural phenomenon attracting the interests of millions of people around the globe. Love sports or hate them, their cultural role or influence cannot easily be dismissed.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "30 rue Davy, 75017 Paris",
@@ -134,6 +133,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 6)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -141,7 +141,6 @@ lesson = Lesson.new(
    name: "Data Science Orientation",
    description: "This is the first stop in the Data Science curriculum from Microsoft. It will help you get started with the program, plan your learning schedule, and connect with fellow students and teaching assistants.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "7 Rue de Casablanca, 75015 Paris",
@@ -149,6 +148,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 
@@ -157,7 +157,6 @@ lesson = Lesson.new(
    name: "Personal Finance",
    description: "Want to better understand investments? How credit works? How and why insurance products like life insurance, health insurance, and property insurance might be relevant for you? How to maximize your retirement savings? This course aims to make finding the answers to these questions, and many other similar questions, interesting and fun.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "17 avenue d'Eylau, 75016 Paris",
@@ -165,6 +164,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 7)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -172,7 +172,6 @@ lesson = Lesson.new(
    name: "French theatre",
    description: "Le théâtre classique du 17e siècle passe pour le sommet de l’art du théâtre en France. Ses trois représentants les plus connus, Corneille et Racine pour la tragédie et Molière pour la comédie comptent parmi les plus grands dramaturges européens de tous les temps, et Molière reste l’un des auteurs les plus joués dans le monde.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "9 rue Ballu, 75009 Paris",
@@ -180,6 +179,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -187,7 +187,6 @@ lesson = Lesson.new(
    name: "How to become a billionnaire?",
    description: "Are you involved in the development and execution of technical projects and eager to know what it takes to fund a project successfully? Would you like to be more in touch with the latest developments in project finance and able to use these to your advantage? If so, you’re in the right place!",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "17 passage Hébrard, 75010 Paris",
@@ -195,6 +194,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 7)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -202,7 +202,6 @@ lesson = Lesson.new(
    name: "Math in Sports",
    description: "In this course you will learn to use some mathematical tools that can help predict and analyze sporting performances and outcomes. This course will help coaches, players, and enthusiasts to make educated decisions about strategy, training, and execution.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "9 rue des deux-ponts, 75004 Paris",
@@ -210,6 +209,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 6)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -217,7 +217,6 @@ lesson = Lesson.new(
    name: "How to raise your kid?",
    description: "Developmental psychology is the study of an individual’s social, emotional, cognitive, and biological development through his or her lifespan. The focus of this course will be from infancy to later life.",
    user_id: (1..10).to_a.sample,
-   img_url: courses.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "33 rue de Lappe, 75011 Paris",
@@ -225,6 +224,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -232,7 +232,6 @@ lesson = Lesson.new(
    name: "Romanian theatre",
    description: "A deep dive in Romian culture - Romian are not only thief !",
    user_id: (1..10).to_a.sample,
-   img_url: 'https://avatars1.githubusercontent.com/u/25384564?v=3',
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(0..8),
    address: "54 rue Monge, 75005 Paris",
@@ -240,6 +239,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
+lesson.img_url = "#{lesson.category}.jpg"
 lesson.save
 
 puts 'Finished!'

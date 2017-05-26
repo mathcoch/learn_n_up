@@ -4,13 +4,12 @@ class MeetingsController < ApplicationController
     @meeting.user = current_user
     @lesson = Lesson.find(params[:lesson_id])
     @meeting.lesson = @lesson
-
     if @meeting.save
       @lesson.dates = (@lesson.dates.split(',') - @meeting.dates.split(',')).join(',')
       @lesson.save
-      redirect_to lesson_path(@lesson)
+      redirect_to user_path(current_user)
     else
-      render 'lessons/show'
+      redirect_to lesson_path(@lesson)
     end
   end
 
@@ -29,7 +28,7 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting = Meeting.find(params["id"])
     @lesson = @meeting.lesson
-    @lesson.dates = @lesson.dates.split(',') +  @meeting.dates_array
+    @lesson.dates = (@lesson.dates.split(',') +  @meeting.dates.split(',')).join(',')
     @lesson.save
     @meeting.destroy
     redirect_to user_path

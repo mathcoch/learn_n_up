@@ -1,12 +1,12 @@
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= @lesson.img_url %>); height: 50vh; background-position: center;">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path @lesson.img_url %>); height: 50vh; background-position: center;">
 </div>
 <section class="lesson">
     <div class="container" id="show-lesson">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
           <div class="header-lesson-teacher">
-            <img class="img-circle" width="120" src=<%= @lesson.user.img_url %> />
+            <img class="img-circle" width="120" src=<%= @lesson.user.avatar_url %> />
             <p><%= @lesson.user.first_name %> <%= @lesson.user.last_name %></p>
           </div>
         </div>
@@ -49,8 +49,9 @@
               </div>
             </div>
           </div>
-        <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
         </div>
+
+        <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
         <div class="col-xs-6">
           <div class="book-form">
             <div class='datepicker' >
@@ -66,14 +67,15 @@
         </div>
 
         <% else %>
+        <div class="col-xs-6">
           <div class="book-form">
             <h2>No availabilities</h2>
           </div>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 </section>
-
 
 <section id="review">
   <div class="container">
@@ -129,10 +131,10 @@
       <div class="col-sm-12">
         <h2 class="section-title">You might be interested in</h2>
       </div>
-      <% @lesson_category.each do |lesson| %>
+      <% @lessons_category.each do |lesson| %>
         <div class="lesson">
           <div class="col-sm-3 lesson-card">
-              <a class="card" href="lessons/">
+              <a class="card" href="<%= lesson_path(lesson) %>">
               <span class="card-category ">
                 <%= lesson.category %>
               </span>
@@ -162,6 +164,17 @@
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ provider: { scrollwheel: false, zoomControl: false }, internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(16);
+        }
+      });
       $(".datepicker div").datepicker({
           format: "mm/dd/yyyy",
           multidate: true,
@@ -174,20 +187,6 @@
           var dates = $(".datepicker div").data('datepicker').getFormattedDate('mm/dd/yyyy');
           console.log(dates);
           $('#meeting_dates').val(dates)
-      });
-
-      var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
-      handler.buildMap({ internal: { id: 'map' } }, function(){
-        markers = handler.addMarkers([
-          {
-            "lat": <%= @lesson.latitude %>,
-            "lng": <%= @lesson.longitude %>,
-            "infowindow": "Course: <%= @lesson.name %>"
-          },
-        ]);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        handler.getMap().setZoom(14)
       });
     });
   <% end %>

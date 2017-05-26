@@ -34,6 +34,7 @@ class LessonsController < ApplicationController
     if @lesson.save
       @lesson.description_crop = @lesson.description[0..120] + ' ...'
       @lesson.category_number = @lesson.category_number_method
+      @lesson.save
       redirect_to lesson_path(@lesson)
     else
       render :new

@@ -10,10 +10,18 @@
 
       <div class="col-sm-8">
         <h2>Your mettings as a teacher</h2>
+
+        <% if current_user.lessons.empty? %>
+          <div class="">
+            <p>No meetings yet ! Be patient ...</p>
+          </div>
+        <% end %>
+
         <% current_user.lessons.each do |lesson| %>
-          <% lesson.meetings.each do |meeting|  %>
-            <% if meeting.status == 'refused' %>
-              <div class="product product-red">
+          <% meeting_count = 0 %>
+          <% lesson.meetings.each do |meeting| %>
+              <% meeting_count += 1 %>
+              <div class="product <%= 'product-red' if meeting.status == 'pending' %>">
                 <%= image_tag meeting.user.avatar_url, alt: "avatar", class: "avatar" %>
                 <div class="product-body">
                     <h3><%= lesson.name %>  | <%= meeting.view_dates %></h3>
@@ -27,13 +35,13 @@
                 <%= link_to "", lesson_path(lesson), class: 'product-link' %>
               </div>
 
-              <% elsif meeting.status == 'pending' %>
+              <% if meeting.status == 'pending' %>
                 <div class="product-validation text-center">
-                  <%= link_to meeting_path(meeting, validate: true), method: 'patch', class: 'product-validation-body validate' do %>
-                    <div><h4>Validate</h4></div>
+                  <%= link_to meeting_path(meeting, status: 'accepted'), method: 'patch', class: 'product-validation-body validate' do %>
+                    <div class="validate"><h4><i class="fa fa-check" aria-hidden="true"></i></h4></div>
                   <% end %>
-                  <%= link_to meeting_path(meeting, decline: true), method: 'patch', class: 'product-validation-body decline' do %>
-                    <div><h4>Decline</h4></div>
+                  <%= link_to meeting_path(meeting, status: 'refused'), method: 'patch', class: 'product-validation-body decline' do %>
+                    <div class="decline"><h4><i class="fa fa-times" aria-hidden="true"></i></h4></div>
                   <% end %>
                 </div>
               <% end %>
@@ -45,7 +53,9 @@
       <div class="col-sm-4">
         <h2>Your lessons</h2>
         <% if current_user.lessons.empty? %>
-          <%= 'no lessons' %>
+          <div class="text-center">
+            <%= link_to t(".top_call_to_action", default: "Let's become a teacher?"), new_lesson_path, class: "navbar-wagon-item navbar-wagon-button" %>
+          </div>
         <% else %>
           <% current_user.lessons.each do |lesson| %>
             <div class="product">
@@ -68,14 +78,21 @@
     <div class="row" id="show-user-2">
       <div class="col-sm-12">
         <h2>Your meetings as a student</h2>
+
+        <% if current_user.meetings.empty? %>
+          <div class="">
+            <p>No meetings yet ! Be patient ...</p>
+          </div>
+        <% end %>
+
         <% current_user.meetings.each do |meeting| %>
-          <div class="product<%= ' product-red' if meeting.status == 'refused' || 'pending' %>">
+          <div class="product <%= 'product-red' unless meeting.status == 'accepted' %>">
             <%= image_tag meeting.lesson.user.avatar_url, alt: "avatar", class: "avatar" %>
               <div class='product-body'>
                 <% if meeting.status == 'refused' %>
-                  <h3 style="color: red">Refused</h3>
+                  <h3 class="alert">Refused</h3>
                 <% elsif meeting.status == 'pending' %>
-                  <h3 style="color: red">Waiting for approval</h3>
+                  <h3 class="pending">Waiting for approval</h3>
                 <% end %>
                 <h3><%= meeting.lesson.name %> | <%= meeting.view_dates %></h3>
                 <p><%= meeting.lesson.description %></p>

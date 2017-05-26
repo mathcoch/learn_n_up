@@ -90,6 +90,7 @@
 .product-validation-body {
   flex: 1 1 auto;
   padding: 10px;
+  text-decoration: none;
     h4 {
       font-weight: bold;
       font-size: 16px;
@@ -97,11 +98,11 @@
     }
 }
 .validate:hover {
-  background: green;
+  background: $green;
   cursor: pointer;
 }
 .decline:hover {
-  background: red;
+  background: $red;
   cursor: pointer;
 }
 .product-red {

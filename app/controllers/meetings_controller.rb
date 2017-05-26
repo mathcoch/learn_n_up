@@ -23,16 +23,6 @@ class MeetingsController < ApplicationController
     else
       render 'users/show'
     end
-
-    # if params[:status] == 'accepted'
-    #   @meeting.validated = true
-    #   @meeting.save
-    # elsif params["decline"] == "true"
-    #   @meeting.refused = true
-    #   @meeting.save
-    # end
-    # redirect_to user_path
-
   end
 
   def destroy

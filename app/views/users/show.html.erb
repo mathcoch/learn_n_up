@@ -55,7 +55,7 @@
       <div class="col-sm-4">
         <h2>Your lessons</h2>
         <% if current_user.lessons.empty? %>
-          </s>
+          </br>
           <div class="text-center">
             <%= link_to t(".top_call_to_action", default: "Let's become a teacher?"), new_lesson_path, class: "navbar-wagon-item navbar-wagon-button" %>
           </div>

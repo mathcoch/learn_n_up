@@ -100,16 +100,6 @@
   <h2 class="description_title">Comments</h2>
     <div class="row">
 
-      <% if current_user.has_done_lesson(@lesson) %>
-        <div class="col-xs-6">
-          <div class="add-review card-review">
-            <a class="btn-add">
-              <%= image_tag("add.png", size: "40x40", alt: "Add btn") %>
-            </a>
-          </div>
-        </div>
-      <% end %>
-
     <% if !@reviews.empty? %>
       <% @reviews.each do |review| %>
         <div class="col-xs-6">

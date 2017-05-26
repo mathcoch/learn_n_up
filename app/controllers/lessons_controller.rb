@@ -16,6 +16,7 @@ class LessonsController < ApplicationController
     @review = Review.new
     @lessons_category = Lesson.where(category: @lesson.category)[0..3]
     @reviews = @lesson.reviews
+    @reviews_average_rating
 
     @hash = Gmaps4rails.build_markers([@lesson]) do |lesson, marker|
       marker.lat lesson.latitude

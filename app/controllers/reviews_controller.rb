@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to lesson_path(@lesson)
     else
-      render 'lessons/show'
+      redirect_to lesson_path(@lesson)
     end
   end
 

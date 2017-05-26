@@ -29,11 +29,11 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(meeting_params)
-    @lesson.category_number = @lesson.category_number_method
-    @lesson.description_crop = @lesson.description[0..120] + ' ...'
     @lesson.user = current_user
     @lesson.img_url = "#{@lesson.category}.jpg"
     if @lesson.save
+      @lesson.description_crop = @lesson.description[0..120] + ' ...'
+      @lesson.category_number = @lesson.category_number_method
       redirect_to lesson_path(@lesson)
     else
       render :new

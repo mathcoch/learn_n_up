@@ -49,8 +49,9 @@
               </div>
             </div>
           </div>
-        <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
         </div>
+
+        <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
         <div class="col-xs-6">
           <div class="book-form">
             <div class='datepicker' >
@@ -66,14 +67,15 @@
         </div>
 
         <% else %>
+        <div class="col-xs-6">
           <div class="book-form">
             <h2>No availabilities</h2>
           </div>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
 </section>
-
 
 <section id="review">
   <div class="container">

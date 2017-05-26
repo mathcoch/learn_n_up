@@ -1,7 +1,9 @@
+<section>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path @lesson.img_url %>); height: 50vh; background-position: center;">
+  </div>
+</section>
+<section class="lesson wrapper">
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path @lesson.img_url %>); height: 50vh; background-position: center;">
-</div>
-<section class="lesson">
     <div class="container" id="show-lesson">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
@@ -34,12 +36,11 @@
                 <ul class="list-unstyled">
                   <li>Duration:  <strong><%= @lesson.duration %> hours</strong></li>
                   <li>Category:  <strong><%= @lesson.category %></strong></li>
-                  <li>Location:  <strong>Address (à faire en P2)</strong></li>
                 </ul>
               </div>
               <div class="col-xs-6">
                 <div class="flat-data">
-                  Material needed (à faire en P2)
+                  Material needed
                 </div>
                 <ul class="list-unstyled">
                   <li><i class="fa fa-laptop"></i><strong>Computer</strong></li>
@@ -77,8 +78,20 @@
     </div>
 </section>
 
-<section id="review">
+<section class="section-gray">
   <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="description_title">Location</h2>
+        <div id="map" class="section-gray similar-lesson text-center"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+  <h2 class="description_title">Comments</h2>
     <div class="row">
 
       <% if current_user.has_done_lesson(@lesson) %>
@@ -95,31 +108,36 @@
       <% @reviews.each do |review| %>
         <div class="col-xs-6">
           <div class="card-review">
-            <%= review.rating %>
-            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %> | <span class="date"><%= review.updated_at %></span></h2>
+            <% review.rating.times do %>
+              <i class="fa fa-star" style="color: #76E2F4"></i>
+            <% end %>
+            <% ( 5 - review.rating ).times do %>
+              <i class="fa fa-star" style="color: #666666"></i>
+            <% end %>
+            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %></h2>
+            <span class="date"><%= review.updated_at.strftime("%d/%m/%y") %></span>
             <p class="content-review"><%= review.comment %></p>
           </div>
         </div>
       <% end %>
+      <% else %>
+      <h4 class="no-comment">No comments yet</h4>
     <% end %>
     </div>
+  </div>
+  <div class="container">
+  <h4 class="description_title">Add a comment</h4>
+    <%= render 'form' %>
   </div>
 </section>
 
 <!-- The map will be drawn in this div -->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div id="map" class="section-gray similar-lesson text-center"></div>
-    </div>
-  </div>
-</div>
 
-<section class="section-gray similar-lesson">
+<section class="similar-lesson section-gray">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h2 class="section-title">You might be interested in</h2>
+        <h2 class="description_title">Other courses</h2>
       </div>
       <% @lessons_category.each do |lesson| %>
         <div class="lesson">
@@ -145,9 +163,7 @@
       <% end %>
     </div>
   </div>
-
-<%= render 'form' %>
-
+</section>
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){

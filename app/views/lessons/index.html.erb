@@ -1,5 +1,5 @@
 
-<div class="banner">
+<section class="banner">
   <video autoplay="autoplay" loop="loop" class="video" poster="<%= image_path 'poster-home-video.jpg' %>">
     <source type="video/mp4" src="<%= video_path 'video-1.mp4' %>">
   </video>
@@ -11,9 +11,9 @@
       <p>Learn what ever, whenever... that's it !</p>
     </h1>
   </div>
-</div>
+</section>
 
-<div class="wrapper-grey padded">
+<section class="wrapper">
   <div class="container">
     <div class="row">
       <div class="description">
@@ -33,6 +33,12 @@
           <p>Our certificates and degrees are officially recognized internationally</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+<section class="wrapper-grey">
+  <div class="container">
+    <div class="row">
       <div class="category-list" id="lessons_list">
         <div class="description-title">
           <h5>Hundreds of available courses, organized by categories</h5>
@@ -53,9 +59,9 @@
     <%= render 'cards' %>
 
   </div>
-</div>
+</section>
 
-<div class="wrapper-white">
+<section class="wrapper-white">
   <div class="container">
     <div class="row marged">
       <div class="col-md-6 align-right">
@@ -70,44 +76,44 @@
         <div class="col-xs-12 col-sm-6">
           <li class="review-category list-unstyled list-category">
             <%= image_tag 'stars.png' %>
-            <h5>Top experience !</h5>
-            <h6>Science - Course Biology advance</h6>
+            <h5><strong>Tom C.</strong> : Top experience !</h5>
+            <h6>Science - Biology advanced</h6>
             <p>I add an amazing experience thanks to Learn Up, my romanian teacher was gentle and very helpfull</p>
           </li>
         </div>
         <div class="col-xs-12 col-sm-6">
           <li class="review-category list-unstyled list-category">
             <%= image_tag 'stars2.png' %>
-            <h5>Thanks Mr Cocktail</h5>
-            <h6>Entrepreneurship - Course drink with passion</h6>
+            <h5><strong>Achille M.</strong> : Thanks Mr Cocktail</h5>
+            <h6>Entrepreneurship - Drink with passion</h6>
             <p>After this 2hours course, I totally understand how to drink a cocktail</p></li>
         </div>
         <div class="col-xs-12 col-sm-6">
           <li class="review-category list-unstyled list-category">
             <%= image_tag 'stars2.png' %>
-            <h5>Cool teacher!</h5>
-            <h6>Language - Course Louchbeam advanced</h6>
+            <h5><strong>Isabelle A.</strong> : Cool teacher!</h5>
+            <h6>Language - Louchbeam advanced</h6>
             <p>Super, I recomment for my colleagues</p>
           </li>
         </div>
         <div class="col-xs-12 col-sm-6">
           <li class="review-category list-unstyled list-category">
             <%= image_tag 'stars.png' %>
-            <h5>Bravo le veau</h5>
-            <h6>Music - Course Make music in Auvergne</h6>
-            <p>Good teacher and good environment, Learn Up was super</p></li>
+            <h5><strong>Emmanuel M.</strong> : Bravo l'équipe</h5>
+            <h6>Entrepreneurship - How to become president in 1year</h6>
+            <p>Good teacher and good environment, Learn Up team is amazing</p></li>
         </div>
       </ul>
     </div>
   </div>
-</div>
+</section>
 
-<div class="wrapper-white">
+<section class="wrapper-white">
   <div class="container padded">
     <h3 class="description-title"><%= image_tag 'map.png', class:'description-image' %>Our local presence</h3>
   </div>
   <div id="map" style="width: 100%; height: 450px;"></div>
-</div>
+</section>
 
 
 <% content_for(:after_js) do %>

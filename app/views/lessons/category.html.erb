@@ -1,4 +1,4 @@
-<div class="banner" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'banner.jpg' %>);">
+<div class="banner cover" style="background: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path 'banner.jpg' %>);">
   <div class="banner-content">
     <h1 class="logo">
       <%= link_to root_path do %>
@@ -59,7 +59,7 @@
           <% @lessons.each do |lesson| %>
             <div class="lesson">
               <div class="col-sm-3 lesson-card">
-                <a class="card" href="lessons/<%= lesson.id %>">
+                <a class="card" href="<%= lesson_path(lesson) %>">
                   <span class="card-category cat-<%= lesson.category_number %>"><%= lesson.category %></span>
                   <h2 class="card-name"><%= lesson.name %></h2>
                   <span class="lesson-informationLabel">

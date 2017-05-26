@@ -25,12 +25,6 @@
 //   lessons.start();
 // });
 
-
-// // ---------------------
-// //
-// //  Helper functions
-// //
-// // ---------------------
 // function getTemplate(templateName) {
 //   return document.querySelector("#" + templateName + "-template").innerHTML;
 // };

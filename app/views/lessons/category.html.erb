@@ -59,7 +59,7 @@
           <% @lessons.each do |lesson| %>
             <div class="lesson">
               <div class="col-sm-3 lesson-card">
-                <a class="card" href="lessons/<%= lesson.id %>">
+                <a class="card" href="<%= lesson_path(lesson) %>">
                   <span class="card-category cat-<%= lesson.category_number %>"><%= lesson.category %></span>
                   <h2 class="card-name"><%= lesson.name %></h2>
                   <span class="lesson-informationLabel">

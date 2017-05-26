@@ -20,6 +20,7 @@
         <% current_user.lessons.each do |lesson| %>
           <% meeting_count = 0 %>
           <% lesson.meetings.each do |meeting| %>
+            <% unless meeting.status == 'refused' %>
               <% meeting_count += 1 %>
               <div class="product <%= 'product-red' if meeting.status == 'pending' %>">
                 <%= image_tag meeting.user.avatar_url, alt: "avatar", class: "avatar" %>
@@ -47,6 +48,7 @@
               <% end %>
             <% end %>
           <% end %>
+        <% end %>
       </div>
 
 
@@ -90,9 +92,9 @@
             <%= image_tag meeting.lesson.user.avatar_url, alt: "avatar", class: "avatar" %>
               <div class='product-body'>
                 <% if meeting.status == 'refused' %>
-                  <h3 class="alert">Refused</h3>
+                  <h3 class="product-alert">Refused</h3>
                 <% elsif meeting.status == 'pending' %>
-                  <h3 class="pending">Waiting for approval</h3>
+                  <h3 class="product-alert">Waiting for approval</h3>
                 <% end %>
                 <h3><%= meeting.lesson.name %> | <%= meeting.view_dates %></h3>
                 <p><%= meeting.lesson.description %></p>

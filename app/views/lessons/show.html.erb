@@ -34,12 +34,11 @@
                 <ul class="list-unstyled">
                   <li>Duration:  <strong><%= @lesson.duration %> hours</strong></li>
                   <li>Category:  <strong><%= @lesson.category %></strong></li>
-                  <li>Location:  <strong>Address (à faire en P2)</strong></li>
                 </ul>
               </div>
               <div class="col-xs-6">
                 <div class="flat-data">
-                  Material needed (à faire en P2)
+                  Material needed
                 </div>
                 <ul class="list-unstyled">
                   <li><i class="fa fa-laptop"></i><strong>Computer</strong></li>
@@ -77,8 +76,20 @@
     </div>
 </section>
 
+<section class="section-gray">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="description_title">Location</h2>
+        <div id="map" class="section-gray similar-lesson text-center"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="review">
   <div class="container">
+  <h2 class="description_title">Comments</h2>
     <div class="row">
 
       <% if current_user.has_done_lesson(@lesson) %>
@@ -104,22 +115,19 @@
     <% end %>
     </div>
   </div>
+  <div class="container">
+  <h4 class="description_title">Add a comment</h4>
+    <%= render 'form' %>
+  </div>
 </section>
 
 <!-- The map will be drawn in this div -->
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div id="map" class="section-gray similar-lesson text-center"></div>
-    </div>
-  </div>
-</div>
 
-<section class="section-gray similar-lesson">
+<section class="similar-lesson">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <h2 class="section-title">You might be interested in</h2>
+        <h2 class="description_title">Other courses</h2>
       </div>
       <% @lessons_category.each do |lesson| %>
         <div class="lesson">
@@ -145,8 +153,6 @@
       <% end %>
     </div>
   </div>
-
-<%= render 'form' %>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

@@ -7,12 +7,13 @@
 <div class="wrapper-grey padded">
   <div class="container">
     <div class="row" id="show-user">
+
       <div class="col-sm-8">
         <h2>Your mettings as a teacher</h2>
         <% current_user.lessons.each do |lesson| %>
           <% lesson.meetings.each do |meeting|  %>
-            <% if meeting.refused == false %>
-              <div class="product<%= ' product-red' if meeting.validated == false %>">
+            <% if meeting.status == 'refused' %>
+              <div class="product product-red">
                 <%= image_tag meeting.user.avatar_url, alt: "avatar", class: "avatar" %>
                 <div class="product-body">
                     <h3><%= lesson.name %>  | <%= meeting.view_dates %></h3>
@@ -25,7 +26,8 @@
                 </ul>
                 <%= link_to "", lesson_path(lesson), class: 'product-link' %>
               </div>
-              <% if meeting.validated == false %>
+
+              <% elsif meeting.status == 'pending' %>
                 <div class="product-validation text-center">
                   <%= link_to meeting_path(meeting, validate: true), method: 'patch', class: 'product-validation-body validate' do %>
                     <div><h4>Validate</h4></div>
@@ -37,8 +39,8 @@
               <% end %>
             <% end %>
           <% end %>
-        <% end %>
       </div>
+
 
       <div class="col-sm-4">
         <h2>Your lessons</h2>
@@ -67,12 +69,12 @@
       <div class="col-sm-12">
         <h2>Your meetings as a student</h2>
         <% current_user.meetings.each do |meeting| %>
-          <div class="product<%= ' product-red' if (meeting.refused || meeting.validated == false) %>">
+          <div class="product<%= ' product-red' if meeting.status == 'refused' || 'pending' %>">
             <%= image_tag meeting.lesson.user.avatar_url, alt: "avatar", class: "avatar" %>
               <div class='product-body'>
-                <% if meeting.refused %>
+                <% if meeting.status == 'refused' %>
                   <h3 style="color: red">Refused</h3>
-                <% elsif meeting.validated == false %>
+                <% elsif meeting.status == 'pending' %>
                   <h3 style="color: red">Waiting for approval</h3>
                 <% end %>
                 <h3><%= meeting.lesson.name %> | <%= meeting.view_dates %></h3>

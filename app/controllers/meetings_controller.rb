@@ -4,6 +4,7 @@ class MeetingsController < ApplicationController
     @meeting.user = current_user
     @lesson = Lesson.find(params[:lesson_id])
     @meeting.lesson = @lesson
+    @meeting.status = 'pending'
     if @meeting.save
       @lesson.dates = (@lesson.dates.split(',') - @meeting.dates.split(',')).join(',')
       @lesson.save
@@ -14,15 +15,24 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    @meeting = Meeting.find(params["id"])
-    if params["validate"] == "true"
-      @meeting.validated = true
-      @meeting.save
-    elsif params["decline"] == "true"
-      @meeting.refused = true
-      @meeting.save
+    @meeting = Meeting.find(params[:id])
+    @meeting.status = params[:status]
+
+    if @meeting.save
+      redirect_to user_path(current_user)
+    else
+      render 'users/show'
     end
-    redirect_to user_path
+
+    # if params[:status] == 'accepted'
+    #   @meeting.validated = true
+    #   @meeting.save
+    # elsif params["decline"] == "true"
+    #   @meeting.refused = true
+    #   @meeting.save
+    # end
+    # redirect_to user_path
+
   end
 
   def destroy

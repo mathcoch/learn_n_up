@@ -25,7 +25,7 @@
               </ul>
             </div>
           <%= f.input :category, collection: Lesson::CATEGORIES, placeholder: "wow a choice", as: :hidden%>
-          <%= f.input :duration, collection: Lesson::DURATION, label: "Duration in hours", placeholder: "longer is better"%>
+          <%= f.input :duration, collection: Lesson::DURATION, label: "Duration (in hours)", placeholder: "longer is better"%>
           <%= f.input :level, collection: Lesson::LEVELS, placeholder: "do it accessible"%>
 
               <div class='datepicker' >

@@ -40,8 +40,16 @@
   text-align: center;
   overflow:hidden;
 }
-.description h1 {
+.description h3 {
   text-align: center;
+  text-transform: uppercase;
+  margin-bottom:25px;
+  font-weight: 600;
+}
+.description p {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top:25px;
 }
 .category-list {
   margin: 80px 0;

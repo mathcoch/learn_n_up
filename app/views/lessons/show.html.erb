@@ -1,7 +1,9 @@
+<section>
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path @lesson.img_url %>); height: 50vh; background-position: center;">
+  </div>
+</section>
+<section class="lesson wrapper">
 
-<div class="banner cover" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path @lesson.img_url %>); height: 50vh; background-position: center;">
-</div>
-<section class="lesson">
     <div class="container" id="show-lesson">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
@@ -87,7 +89,7 @@
   </div>
 </section>
 
-<section id="review">
+<section>
   <div class="container">
   <h2 class="description_title">Comments</h2>
     <div class="row">
@@ -118,6 +120,8 @@
           </div>
         </div>
       <% end %>
+      <% else %>
+      <h4 class="no-comment">No comments yet</h4>
     <% end %>
     </div>
   </div>
@@ -129,7 +133,7 @@
 
 <!-- The map will be drawn in this div -->
 
-<section class="similar-lesson">
+<section class="similar-lesson section-gray">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
@@ -159,7 +163,7 @@
       <% end %>
     </div>
   </div>
-
+</section>
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $('document').ready(function(){

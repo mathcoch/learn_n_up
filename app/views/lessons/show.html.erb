@@ -18,11 +18,17 @@
           <div class="header-lesson-details">
             <div class="header-lesson-name">
               <h1><%= @lesson.name %></h1>
-              <i class="fa fa-star" style="color: #76E2F4"></i>
-              <i class="fa fa-star" style="color: #76E2F4"></i>
-              <i class="fa fa-star" style="color: #76E2F4"></i>
-              <i class="fa fa-star" style="color: #666666"></i>
-              <i class="fa fa-star" style="color: #666666"></i>
+            <% unless @average_rating == -1 %>
+              <% @average_rating.times do %>
+                <i class="fa fa-star" style="color: #76E2F4"></i>
+              <% end %>
+              <% ( 5 - @average_rating ).times do %>
+                <i class="fa fa-star" style="color: #666666"></i>
+              <% end %>
+            <% else %>
+              <p>No rating available yet...</p>
+            <% end %>
+
             </div>
           </div>
           <div id="lesson-description">

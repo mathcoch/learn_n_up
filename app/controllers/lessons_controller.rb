@@ -16,7 +16,10 @@ class LessonsController < ApplicationController
     @review = Review.new
     @lessons_category = Lesson.where(category: @lesson.category)[0..3]
     @reviews = @lesson.reviews
-    @reviews_average_rating
+    @average_rating = -1
+    @average_rating = @reviews.reduce(0) { |s,r| s += r.rating }/@reviews.size unless @reviews.empty?
+
+    @reviews
 
     @hash = Gmaps4rails.build_markers([@lesson]) do |lesson, marker|
       marker.lat lesson.latitude

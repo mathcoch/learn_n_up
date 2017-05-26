@@ -1,9 +1,12 @@
 // Your footer style
 .background {
-  background-color: #FFFFFF;
-  background-image: -webkit-linear-gradient(85deg, $light-blue 50%,  $gray-light 50%);
+  // background-image: -webkit-linear-gradient(85deg, $light-blue 50%,  $gray-light 50%);
   min-height: 185px;
   padding: 50px;
+}
+#footer:before{
+  background-color: $gray-light;
+  transform: skewY(-3deg);
 }
 .social:hover {
      -webkit-transform: scale(1.1);
@@ -13,27 +16,29 @@
  .social {
      -webkit-transform: scale(0.8);
      /* Browser Variations: */
-
      -moz-transform: scale(0.8);
      -o-transform: scale(0.8);
      -webkit-transition-duration: 0.5s;
      -moz-transition-duration: 0.5s;
      -o-transition-duration: 0.5s;
  }
-/*
-    Multicoloured Hover Variations
-*/
+ footer .logo{
+  width: 60px;
+ }
+ footer p{
+  color:$dark-blue;
+ }
  #social-fb {
-     color: $gray-light;
+     color: $light-blue;
  }
  #social-tw {
-     color: $gray-light;
+     color: $light-blue;
  }
  #social-gp {
-     color: $gray-light;
+     color: $light-blue;
  }
  #social-em {
-     color: $gray-light;
+     color: $light-blue;
  }
  #social-fb:hover {
      color: #301781;
@@ -47,10 +52,3 @@
  #social-em:hover {
      color: #301781;
  }
-strong {
-  color: #76E2F4;
-  transition: all 0.6s ease;
-}
-strong:hover {
-  color: #301781;
-}

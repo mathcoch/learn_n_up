@@ -3,6 +3,7 @@ class Meeting < ApplicationRecord
   belongs_to :lesson
 
   validates :dates, :user, :lesson, presence: true
+  validates :status, inclusion: ['pending', 'accepted', 'refused']
 
   def dates_array
     dates_in_array = self.dates.split(',')

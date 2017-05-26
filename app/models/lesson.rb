@@ -14,7 +14,7 @@ class Lesson < ApplicationRecord
 
   CATEGORIES = ['Music', 'Language', 'Science', 'Culture', 'Entrepreneurship', 'Sport', 'Finance']
   LEVELS = ['Beginner', 'Advanced', 'Pro']
-  DURATION = (0..8)
+  DURATION = (1..10)
 
   validates :name, :description, :user, :address, presence: true
   validates :category, inclusion: CATEGORIES

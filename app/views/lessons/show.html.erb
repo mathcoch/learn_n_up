@@ -106,8 +106,14 @@
       <% @reviews.each do |review| %>
         <div class="col-xs-6">
           <div class="card-review">
-            <%= review.rating %>
-            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %> | <span class="date"><%= review.updated_at %></span></h2>
+            <% review.rating.times do %>
+              <i class="fa fa-star" style="color: #76E2F4"></i>
+            <% end %>
+            <% ( 5 - review.rating ).times do %>
+              <i class="fa fa-star" style="color: #666666"></i>
+            <% end %>
+            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %></h2>
+            <span class="date"><%= review.updated_at.strftime("%d/%m/%y") %></span>
             <p class="content-review"><%= review.comment %></p>
           </div>
         </div>

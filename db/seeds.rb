@@ -55,12 +55,21 @@ courses = ['https://lorempixel.com/1600/1000/business/1',
 puts 'Creating 10 fake users...'
 
 user = User.create(
-   email:    "learnup@gmail.com",
+   email:    "robin@gmail.com",
    password: "123456",
    password_confirmation: "123456",
-   first_name: "Tom",
-   last_name: "Sawyer",
-   img_url: avatars.sample
+   first_name: "Robin",
+   last_name: "Yo",
+   img_url: 'https://avatars1.githubusercontent.com/u/22995692?v=3&s=400'
+ )
+
+user = User.create(
+   email:    "rafael@gmail.com",
+   password: "123456",
+   password_confirmation: "123456",
+   first_name: "Rafael",
+   last_name: "Yo",
+   img_url: 'https://avatars2.githubusercontent.com/u/15720142?v=3&s=400'
  )
 
 9.times do
@@ -108,8 +117,8 @@ lesson.save
 
 lesson = Lesson.new(
    category:    'Language',
-   name: "Conversational English Skills",
-   description: "Are you finding it difficult to start the conversation, or find the right words when communicating in English? Do you know how to start and end conversations in a polite way? Do it through this 4h course.",
+   name: "English Skills in a swimming pool",
+   description: "Are you finding it difficult to start the conversation in water, or find the right words when communicating in English? Do you know how to start and end conversations in a polite way? Do it through this 4h course.",
    user_id: (1..10).to_a.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(1..10),
@@ -199,8 +208,8 @@ lesson.save
 
 lesson = Lesson.new(
    category:    'Sport',
-   name: "Math in Sports",
-   description: "In this course you will learn to use some mathematical tools that can help predict and analyze sporting performances and outcomes. This course will help coaches, players, and enthusiasts to make educated decisions about strategy, training, and execution.",
+   name: "Water and polo",
+   description: "In this course you will learn to use some tactics for waterpoloting with friends and analyzing sporting performances and outcomes. This course will help coaches, players, and enthusiasts to make educated decisions about strategy, training, and execution.",
    user_id: (1..10).to_a.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
    duration: rand(1..10),
@@ -229,7 +238,7 @@ lesson.save
 
 lesson = Lesson.new(
    category:    'Language',
-   name: "Romanian theatre",
+   name: "Romanian theatre and water consequences",
    description: "A deep dive in Romian culture - Romian are not only thief !",
    user_id: (1..10).to_a.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,

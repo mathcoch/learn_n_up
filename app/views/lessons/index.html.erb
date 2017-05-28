@@ -1,3 +1,6 @@
+<% content_for(:title_tag) do %>
+  <%= "Learn'n up | Thousand of lessons available" %>
+<% end %>
 
 <section class="banner">
   <video autoplay="autoplay" loop="loop" class="video" poster="<%= image_path 'poster-home-video.jpg' %>">
@@ -6,7 +9,7 @@
   <div class="banner-content">
     <h1 class="logo">
       <%= link_to root_path do %>
-        <%= image_tag "logo-large.png" %>
+        <%= image_tag "logo/logo-large.png" %>
       <% end %>
       <p>Learn what ever, whenever... that's it !</p>
     </h1>
@@ -19,98 +22,55 @@
       <div class="description">
         <div class="col-xs-8 col-sm-4">
           <h3 class='description-title'>Skills</h3>
-          <%= image_tag 'skills.png', class:'description-image' %>
+          <%= image_tag 'logos_for_index/skills.png', class:'description-image' %>
           <p>Develop sought-after skills for the current job market</p>
         </div>
         <div class="col-xs-8 col-sm-4">
           <h3 class='description-title'>Coaching</h3>
-          <%= image_tag 'growth.png', class:'description-image' %>
+          <%= image_tag 'logos_for_index/growth.png', class:'description-image' %>
           <p>A coach to motivate you to achieve your goal</p>
         </div>
         <div class="col-xs-8 col-sm-4">
           <h3 class='description-title'>Rewards</h3>
-          <%= image_tag 'award.png', class:'description-image' %>
+          <%= image_tag 'logos_for_index/award.png', class:'description-image' %>
           <p>Our certificates and degrees are officially recognized internationally</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <section class="wrapper-grey">
   <div class="container">
     <div class="row">
-      <div class="category-list" id="lessons_list">
-        <div class="description-title">
-          <h5>Hundreds of available courses, organized by categories</h5>
-        </div>
-        <ul class="list-category list-unstyled list-inline">
-          <li class="card-category cat-4"><%= link_to 'all', lessons_path + '#lessons_list' %></li>
-          <li class="card-category cat-1"><%= link_to 'music', lessons_path + '/category/Music#lessons_list' %></li>
-          <li class="card-category cat-2"><%= link_to 'language', lessons_path + '/category/Language#lessons_list' %></li>
-          <li class="card-category cat-3"><%= link_to 'science', lessons_path + '/category/Science#lessons_list' %></li>
-          <li class="card-category cat-4"><%= link_to 'culture', lessons_path + '/category/Culture#lessons_list' %></li>
-          <li class="card-category cat-5"><%= link_to 'entrepreneurship', lessons_path + '/category/Entrepreneurship#lessons_list' %></li>
-          <li class="card-category cat-6"><%= link_to 'sport', lessons_path + '/category/Sport#lessons_list' %></li>
-          <li class="card-category cat-7"><%= link_to 'finance', lessons_path + '/category/Finance#lessons_list' %></li>
-        </ul>
-      </div>
+    <%= render 'categories' %>
     </div>
-
     <%= render 'cards' %>
-
   </div>
 </section>
 
 <section class="wrapper-white">
   <div class="container padded">
-    <h3 class="description-title"><%= image_tag 'good.png', class:'description-image' %>Our latest reviews</h3>
+    <h3 class="description-title"><%= image_tag 'logos_for_index/good.png', class:'description-image' %>Our latest reviews</h3>
     <div class="row">
-      <ul>
-        <div class="col-xs-12 col-sm-6">
-          <li class="review-category list-unstyled list-category">
-            <%= image_tag 'stars.png' %>
-            <h5><strong>Tom C.</strong> : Top experience !</h5>
-            <h6>Science - Biology advanced</h6>
-            <p>I add an amazing experience thanks to Learn Up, my romanian teacher was gentle and very helpfull</p>
-          </li>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <li class="review-category list-unstyled list-category">
-            <%= image_tag 'stars2.png' %>
-            <h5><strong>Achille M.</strong> : Thanks Mr Cocktail</h5>
-            <h6>Entrepreneurship - Drink with passion</h6>
-            <p>After this 2hours course, I totally understand how to drink a cocktail</p></li>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <li class="review-category list-unstyled list-category">
-            <%= image_tag 'stars2.png' %>
-            <h5><strong>Isabelle A.</strong> : Cool teacher!</h5>
-            <h6>Language - Louchbeam advanced</h6>
-            <p>Super, I recomment for my colleagues</p>
-          </li>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <li class="review-category list-unstyled list-category">
-            <%= image_tag 'stars.png' %>
-            <h5><strong>Emmanuel M.</strong> : Bravo l'équipe</h5>
-            <h6>Entrepreneurship - How to become president in 1year</h6>
-            <p>Good teacher and good environment, Learn Up team is amazing</p></li>
-        </div>
-      </ul>
+    <% @reviews.each do |review| %>
+      <%= render 'review', review: review, lesson: review.lesson.name %>
+    <% end %>
     </div>
   </div>
 </section>
 
 <section class="wrapper-white" >
   <div class="container padded">
-    <h3 class="description-title"><%= image_tag 'map.png', class:'description-image' %>Our local presence</h3>
+    <h3 class="description-title"><%= image_tag 'logos_for_index/map.png', class:'description-image' %>Our local presence</h3>
   </div>
+  <!-- The map will be drawn in this div -->
   <div id="map" style="width: 100%; height: 450px;"></div>
 </section>
 
-
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
+    // Creation of Google Maps
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ provider: { scrollwheel: false, zoomControl: false }, internal: { id: 'map' } }, function() {
@@ -124,16 +84,14 @@
         }
       });
     });
-
-    <% if Rails.env.production? %>
-
+    // On production only initialize Algolia search
+    <% if Rails.env.production? && @algolia %>
       $('document').ready(function(){
         var lessons = instantsearch({
-          appId: 'LZEMPFONKV',
-          apiKey: '427c69ac1af038f71cecc79b5be449e3',
+          appId: '<%= ENV['ALGOLIA_ID'] %>',
+          apiKey: '<%= ENV['ALGOLIA_KEY'] %>',
           indexName: 'Lesson',
         });
-
         var lessonsHits = instantsearch.widgets.hits({
           container: document.querySelector('#lessons'),
           hitsPerPage: 100,
@@ -142,20 +100,17 @@
             empty: getTemplate('no-results-lesson'),
           }
         });
-
         var searchBox = instantsearch.widgets.searchBox({
           container: document.querySelector('#search-input'),
           placeholder: 'Search for your lesson',
         });
-
         lessons.addWidget(lessonsHits);
         lessons.addWidget(searchBox);
         lessons.start();
-
         function getTemplate(templateName) {
           return document.querySelector("#" + templateName + "-template").innerHTML;
         };
       });
     <% end %>
-  <% end %>
+  </script>
 <% end %>

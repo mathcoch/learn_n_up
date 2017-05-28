@@ -1,30 +1,30 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: [:show]
+  before_action :set_lesson, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @lessons = Lesson.where.not(latitude: nil, longitude: nil)
-
-    @hash = Gmaps4rails.build_markers(@lessons) do |lesson, marker|
-      marker.lat lesson.latitude
-      marker.lng lesson.longitude
+    unless params[:category]
+      @lessons = Lesson.where.not(latitude: nil, longitude: nil)
+      @hash = build_map(@lessons)
+      @reviews = Review.all.sample(3)
+      @algolia = true
+    else
+      @lessons = Lesson.where.not(latitude: nil, longitude: nil)
+                       .where(category: params[:category])
+      @hash = build_map(@lessons)
+      @reviews = Review.all.sample(3)
+      @algolia = false
     end
   end
 
   def show
     @meeting = Meeting.new
     @review = Review.new
+     # Select 3 cards for 'you might be interested in'
     @lessons_category = Lesson.where(category: @lesson.category)[0..3]
+    @hash = build_map([@lesson])
     @reviews = @lesson.reviews
-    @average_rating = -1
-    @average_rating = @reviews.reduce(0) { |s,r| s += r.rating }/@reviews.size unless @reviews.empty?
-
-    @reviews
-
-    @hash = Gmaps4rails.build_markers([@lesson]) do |lesson, marker|
-      marker.lat lesson.latitude
-      marker.lng lesson.longitude
-    end
+    @average_rating = @reviews.empty? ? -1 : @reviews.reduce(0) { |s,r| s += r.rating }/@reviews.size
   end
 
   def new
@@ -32,10 +32,11 @@ class LessonsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.new(meeting_params)
+    @lesson = Lesson.new(lesson_params)
     @lesson.user = current_user
-    @lesson.img_url = "#{@lesson.category}.jpg"
-    if @lesson.save
+    @lesson.img_url = "#{@lesson.category}.jpg" || 'https://lorempixel.com/1600/1000/business/2'
+
+    if @lesson.valid?
       @lesson.description_crop = @lesson.description[0..120] + ' ...'
       @lesson.category_number = @lesson.category_number_method
       @lesson.save
@@ -46,13 +47,8 @@ class LessonsController < ApplicationController
   end
 
   def destroy
-    @lesson = Lesson.find(params["id"])
     @lesson.destroy
     redirect_to user_path
-  end
-
-  def category
-    @lessons = Lesson.where(category: params[:category])
   end
 
   private
@@ -61,8 +57,14 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find(params[:id])
   end
 
-  def meeting_params
-    params.require(:lesson).permit(:name, :category, :description, :level, :duration, :address, :city, :dates)
+  def build_map(lessons)
+    Gmaps4rails.build_markers(lessons) do |lesson, marker|
+      marker.lat lesson.latitude
+      marker.lng lesson.longitude
+    end
   end
 
+  def lesson_params
+    params.require(:lesson).permit(:name, :category, :description, :level, :duration, :address, :city, :dates)
+  end
 end

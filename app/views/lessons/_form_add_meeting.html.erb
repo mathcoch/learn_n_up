@@ -1,0 +1,4 @@
+<%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
+  <%= f.input :dates, :as => :hidden %>
+  <%= f.submit "Book lesson", class: "btn btn-blue" %>
+<% end %>

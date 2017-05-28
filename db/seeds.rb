@@ -97,7 +97,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,05/28/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -112,7 +112,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -127,7 +127,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -142,7 +142,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 6)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -157,7 +157,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 
@@ -173,7 +173,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 7)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -188,7 +188,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -203,7 +203,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 7)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -218,7 +218,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 6)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
@@ -233,12 +233,12 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 3)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 lesson = Lesson.new(
    category:    'Language',
-   name: "Romanian theatre and water consequences",
+   name: "Romanian theatre and water",
    description: "A deep dive in Romian culture - Romian are not only thief !",
    user_id: (1..10).to_a.sample,
    level:['Beginner', 'Advanced', 'Pro'].sample,
@@ -248,7 +248,7 @@ lesson = Lesson.new(
    dates: "05/25/2017,05/26/2017,05/27/2017,06/01/2017,06/02/2017,06/03/2017",
    category_number: 2)
 lesson.description_crop = lesson.description[0..120] + ' ...'
-lesson.img_url = "#{lesson.category}.jpg"
+lesson.img_url = "banners_for_show/#{lesson.category}.jpg"
 lesson.save
 
 puts 'Finished!'

@@ -20,21 +20,21 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'bootstrap-datepicker-rails'
-gem 'geocoder'
 gem "coffee-rails"
-gem "gmaps4rails"
 
+# For Gmaps and Autocomplete
+gem "gmaps4rails"
+gem 'geocoder'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
-gem "algoliasearch-rails"
-gem 'turbolinks', '~> 5'
 
+# For Algolia instant search
+gem "algoliasearch-rails"
 
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'

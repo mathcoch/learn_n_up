@@ -1,4 +1,5 @@
-<% if Rails.env.production? %>
+<!-- If in production and not in a category-index than use Algolia to generate dynamically the cards -->
+<% if Rails.env.production? && @algolia %>
 
   <div class="row">
     <div class="description">
@@ -12,7 +13,7 @@
     <div id="lessons"></div>
   </div>
 
-  <!-- TEMPLATES -->
+  <!-- Card template for Algolia -->
   <script type="text/html" id="lesson-template">
     <div class="lesson">
       <div class="col-sm-3 lesson-card">
@@ -36,7 +37,7 @@
       <a href="." class='clear-all'>Clear search</a>
     </div>
   </script>
-
+<!-- If in dev. than do not use Algolia (to avoid discrepencies between DB local vs. Heroku) -->
 <% else %>
   <div class="text-center padded" id="newsletter">
     <% if @lessons.empty? %>
@@ -49,20 +50,7 @@
     <div class="row">
       <div id="lessons">
         <% @lessons.each do |lesson| %>
-          <div class="lesson">
-            <div class="col-sm-3 lesson-card">
-              <a class="card" href="lessons/<%= lesson.id %>">
-                <span class="card-category cat-<%= lesson.category_number %>"><%= lesson.category %></span>
-                <h2 class="card-name"><%= lesson.name %></h2>
-                <span class="lesson-informationLabel">
-                  <i class="lesson-informationIcon  icon-calendar3"></i>
-                  6 mois | Paris
-                </span>
-                <p class="card-description"><%= lesson.description[0..120] + '...' %></p>
-                <p class="show-lesson show-lesson-cat-<%= lesson.category_number %>">Show lesson</p>
-              </a>
-            </div>
-          </div>
+          <%= render 'card', lesson: lesson %>
         <% end %>
       </div>
     </div>

@@ -1,9 +1,13 @@
+<% content_for(:title_tag) do %>
+  <%= "Details on '#{@lesson.name}'" %>
+<% end %>
+
 <section class="section-show">
   <div class="banner cover" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path @lesson.img_url %>); height: 50vh; background-position: center;">
   </div>
 </section>
-<section class="lesson wrapper">
 
+<section class="lesson wrapper">
     <div class="container" id="show-lesson">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
@@ -28,7 +32,6 @@
             <% else %>
               <p>No rating available yet...</p>
             <% end %>
-
             </div>
           </div>
           <div id="lesson-description">
@@ -61,15 +64,13 @@
         <% if @lesson.params_for_datepicker[:alert] == 'ok' %>
         <div class="col-xs-6">
           <div class="book-form">
-            <div class='datepicker' >
+            <div class='datepicker'>
+              <!-- The datepicker will be drawn in this div -->
               <div id="datepicker_id"></div>
             </div>
-            <form action="<%= lesson_meetings_path(@lesson) %>" method="post" >
-              <%= simple_form_for @meeting, url: lesson_meetings_path(@lesson) do |f| %>
-                <%= f.input :dates, :as => :hidden %>
-                <%= f.submit "Book lesson", class: "btn btn-blue" %>
-              <% end %>
-            </form>
+            <div>
+              <%= render 'form_add_meeting' %>
+            </div>
           </div>
         </div>
 
@@ -89,6 +90,7 @@
     <div class="row">
       <div class="col-xs-12">
         <h2 class="description_title">Location</h2>
+        <!-- The map will be drawn in this div -->
         <div id="map" class="section-gray similar-lesson text-center"></div>
       </div>
     </div>
@@ -99,35 +101,21 @@
   <div class="container">
   <h2 class="description_title">Comments</h2>
     <div class="row">
-
     <% if !@reviews.empty? %>
       <% @reviews.each do |review| %>
-        <div class="col-xs-6">
-          <div class="card-review">
-            <% review.rating.times do %>
-              <i class="fa fa-star" style="color: #76E2F4"></i>
-            <% end %>
-            <% ( 5 - review.rating ).times do %>
-              <i class="fa fa-star" style="color: #666666"></i>
-            <% end %>
-            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %></h2>
-            <span class="date"><%= review.updated_at.strftime("%d/%m/%y") %></span>
-            <p class="content-review"><%= review.comment %></p>
-          </div>
-        </div>
+        <%= render 'review', review: review, lesson: false %>
       <% end %>
-      <% else %>
+    <% else %>
       <h4 class="no-comment">No comments yet</h4>
     <% end %>
     </div>
   </div>
   <div class="container">
   <h4 class="description_title">Add a comment</h4>
-    <%= render 'form' %>
+    <%= render 'form_add_review' %>
   </div>
 </section>
 
-<!-- The map will be drawn in this div -->
 
 <section class="similar-lesson section-gray">
   <div class="container">
@@ -136,32 +124,14 @@
         <h2 class="description_title">Other courses</h2>
       </div>
       <% @lessons_category.each do |lesson| %>
-        <div class="lesson">
-          <div class="col-sm-3 lesson-card">
-              <a class="card" href="<%= lesson_path(lesson) %>">
-              <span class="card-category ">
-                <%= lesson.category %>
-              </span>
-              <h2 class="card-name">
-                  <%= lesson.name %>
-              </h2>
-              <span class="lesson-informationLabel">
-                <i class="lesson-informationIcon  icon-calendar3"></i>
-                6 mois | Paris
-              </span>
-              <p class="card-description">
-                <%= lesson.description[0..120] + "..." %>
-              </p>
-              <p class="show-lesson show-lesson-cat-">Show lesson</p>
-            </a>
-          </div>
-        </div>
+        <%= render 'card', lesson: lesson %>
       <% end %>
     </div>
   </div>
 </section>
+
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
     $('document').ready(function(){
       var handler = Gmaps.build('Google');
       handler.buildMap({ provider: { scrollwheel: false, zoomControl: false }, internal: { id: 'map' } }, function() {
@@ -188,5 +158,5 @@
           $('#meeting_dates').val(dates)
       });
     });
-  <% end %>
+  </script>
 <% end %>

@@ -31,8 +31,6 @@ end
 
 # For Algolia instant search
 gem "algoliasearch-rails"
-gem 'turbolinks', '~> 5'
-
 
 group :development, :test do
   gem 'binding_of_caller'

@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  <%= "Details on '#{@lesson.name}'" %>
+<% end %>
+
 <section class="section-show">
   <div class="banner cover" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%), url(<%= image_path @lesson.img_url %>); height: 50vh; background-position: center;">
   </div>
@@ -102,21 +106,11 @@
 
     <% if !@reviews.empty? %>
       <% @reviews.each do |review| %>
-        <div class="col-xs-6">
-          <div class="card-review">
-            <% review.rating.times do %>
-              <i class="fa fa-star" style="color: #76E2F4"></i>
-            <% end %>
-            <% ( 5 - review.rating ).times do %>
-              <i class="fa fa-star" style="color: #666666"></i>
-            <% end %>
-            <h2 class="user-name"><%= review.user.first_name %> <%= review.user.last_name %></h2>
-            <span class="date"><%= review.updated_at.strftime("%d/%m/%y") %></span>
-            <p class="content-review"><%= review.comment %></p>
-          </div>
-        </div>
+
+        <%= render 'review', review: review %>
+
       <% end %>
-      <% else %>
+    <% else %>
       <h4 class="no-comment">No comments yet</h4>
     <% end %>
     </div>

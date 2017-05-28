@@ -1,3 +1,7 @@
+<% content_for(:title_tag) do %>
+  <%= "Become a teacher in one click !" %>
+<% end %>
+
 <div class="grey-background-page">
     <div class="row text-center banner-create banner">
       <div class="col-xs-12 title_create">
@@ -25,7 +29,7 @@
               </ul>
             </div>
           <%= f.input :category, collection: Lesson::CATEGORIES, placeholder: "wow a choice", as: :hidden%>
-          <%= f.input :duration, collection: Lesson::DURATION, label: "Duration (in hours)", placeholder: "longer is better"%>
+          <%= f.input :duration, collection: Lesson::DURATIONS, label: "Duration (in hours)", placeholder: "longer is better"%>
           <%= f.input :level, collection: Lesson::LEVELS, placeholder: "do it accessible"%>
 
               <div class='datepicker' >

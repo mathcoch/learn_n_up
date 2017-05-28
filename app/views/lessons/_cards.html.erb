@@ -1,3 +1,4 @@
+<!-- If in production than use Algolia to generate dynamically the cards -->
 <% if Rails.env.production? %>
 
   <div class="row">
@@ -12,7 +13,7 @@
     <div id="lessons"></div>
   </div>
 
-  <!-- TEMPLATES -->
+  <!-- Card template for Algolia -->
   <script type="text/html" id="lesson-template">
     <div class="lesson">
       <div class="col-sm-3 lesson-card">
@@ -36,7 +37,7 @@
       <a href="." class='clear-all'>Clear search</a>
     </div>
   </script>
-
+<!-- If in dev. than do not use Algolia (to avoid discrepencies between DB local vs. Heroku) -->
 <% else %>
   <div class="text-center padded" id="newsletter">
     <% if @lessons.empty? %>

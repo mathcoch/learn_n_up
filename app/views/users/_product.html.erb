@@ -1,0 +1,43 @@
+<!-- Template for diplaying meetings -->
+<% if product_type == 'meeting' %>
+  <div class="product <%= 'product-red' unless meeting.status == 'accepted' %>">
+    <%= image_tag meeting.user.avatar_url, alt: "avatar", class: "avatar" if meeting %>
+    <div class="product-body">
+        <h3 class="product-alert"><%= meeting.status == 'pending' ? 'Waiting for approval' : meeting.status.capitalize %></h3>
+        <h3><%= lesson.name %>  | <%= meeting.view_dates %></h3>
+        <p> <%= lesson.description[0..120] + " ..." %></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <%= link_to meeting_path(meeting), method: 'delete', class: 'product-delete-link' do %>
+        <li><i class="fa fa-trash"></i></li>
+      <% end %>
+    </ul>
+    <%= link_to "", lesson_path(lesson), class: 'product-link' %>
+  </div>
+
+  <!-- Display validation buttons only for teacher and pending meeting -->
+  <% if meeting.status == 'pending' && user_type == 'teacher' %>
+    <div class="product-validation text-center">
+      <%= link_to meeting_path(meeting, status: 'accepted'), method: 'patch', class: 'product-validation-body validate' do %>
+        <div class="validate"><h4><i class="fa fa-check" aria-hidden="true"></i></h4></div>
+      <% end %>
+      <%= link_to meeting_path(meeting, status: 'refused'), method: 'patch', class: 'product-validation-body decline' do %>
+        <div class="decline"><h4><i class="fa fa-times" aria-hidden="true"></i></h4></div>
+      <% end %>
+    </div>
+  <% end %>
+<!-- Template for diplaying lessons -->
+<% else %>
+  <div class="product">
+    <div class="product-body">
+      <h3><%= lesson.name %></h3>
+      <p> <%= lesson.description[0..50] + " ..." %></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <%= link_to lesson_path(lesson), method: 'delete', class: 'product-delete-link' do %>
+        <li><i class="fa fa-trash"></i></li>
+      <% end %>
+    </ul>
+    <%= link_to "", lesson_path(lesson), class: 'product-link' %>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :lessons, only: [:new, :create, :index, :show, :destroy] do
     collection do
-      get 'category/:category', to: "lessons#category"
+      get 'category/:category', to: "lessons#index"
     end
     resources :meetings, only: [:create]
     resources :reviews, only: [:create]

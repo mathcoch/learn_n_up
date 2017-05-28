@@ -13,34 +13,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-md-6 col-md-offset-3 form_background padding title_form">
-        <%= simple_form_for @lesson do |f| %>
-          <%= f.input :name, label: "Title", placeholder: "a few imagination" %>
-          <%= f.input :description, as: :text, placeholder: "be clear and concise"%>
-            <div class='category'>
-              <h5 class="title_form"><strong>Category</strong> </h5>
-              <ul class="list-inline">
-                <li id="music"><%= image_tag 'music-cat.png', class:'description-image-small' %></li>
-                <li id="science"><%= image_tag 'science-cat.png', class:'description-image-small' %></li>
-                <li id="culture"><%= image_tag 'culture-cat.png', class:'description-image-small' %></li>
-                <li id="finance"><%= image_tag 'finance-cat.png', class:'description-image-small' %></li>
-                <li id="language"><%= image_tag 'language-cat.png', class:'description-image-small' %></li>
-                <li id="sport"><%= image_tag 'sport-cat.png', class:'description-image-small' %></li>
-                <li id="startup"><%= image_tag 'startup-cat.png', class:'description-image-small' %></li>
-              </ul>
-            </div>
-          <%= f.input :category, collection: Lesson::CATEGORIES, placeholder: "wow a choice", as: :hidden%>
-          <%= f.input :duration, collection: Lesson::DURATIONS, label: "Duration (in hours)", placeholder: "longer is better"%>
-          <%= f.input :level, collection: Lesson::LEVELS, placeholder: "do it accessible"%>
-
-              <div class='datepicker' >
-                <div id="datepicker_id"></div>
-              </div>
-
-          <%= f.input :dates, as: :hidden %>
-
-          <%= f.input :address, placeholder: "where will be the meeting..." %>
-          <%= f.button :submit %>
-        <% end %>
+        <%= render 'form_add_lesson' %>
         <%= link_to "Back to the lessons", lessons_path %>
       </div>
     </div>
@@ -48,7 +21,8 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
+  <script>
+    // Datepicker creation and link with simple_form
     $('document').ready(function(){
       $(".datepicker div").datepicker({
         format: "mm/dd/yyyy",
@@ -61,41 +35,14 @@
           console.log(dates);
           $('#lesson_dates').val(dates)
       });
-      $('#music').on('click', function(event) {
-        $('#lesson_category').val('Music');
-        $('.list-inline li').removeClass('description-image-small-selected')
-        $('#music').addClass('description-image-small-selected')
-      });
-      $('#science').on('click', function(event) {
-        $('#lesson_category').val('Science')
-        $('.list-inline li').removeClass('description-image-small-selected')
-        $('#science').addClass('description-image-small-selected')
-      });
-      $('#culture').on('click', function(event) {
-        $('#lesson_category').val('Culture')
-        $('.list-inline li').removeClass('description-image-small-selected')
-        $('#culture').addClass('description-image-small-selected')
-      });
-      $('#finance').on('click', function(event) {
-        $('#lesson_category').val('Finance')
-        $('.list-inline li').removeClass('description-image-small-selected')
-        $('#finance').addClass('description-image-small-selected')
-      });
-      $('#language').on('click', function(event) {
-        $('#lesson_category').val('Language')
-        $('.list-inline li').removeClass('description-image-small-selected')
-        $('#language').addClass('description-image-small-selected')
-      });
-      $('#sport').on('click', function(event) {
-        $('#lesson_category').val('Sport')
-        $('.list-inline li').removeClass('description-image-small-selected')
-        $('#sport').addClass('description-image-small-selected')
-      });
-      $('#startup').on('click', function(event) {
-        $('#lesson_category').val('Entrepreneurship')
-        $('.list-inline li').removeClass('description-image-small-selected')
-        $('#startup').addClass('description-image-small-selected')
-      });
+      // Logos to click on categories
+      <% Lesson::CATEGORIES.each do |category| %>
+        $('#<%= category.downcase %>').on('click', function(event) {
+          $('#lesson_category').val('<%= category %>');
+          $('.list-inline li').removeClass('description-image-small-selected')
+          $('#<%= category.downcase %>').addClass('description-image-small-selected')
+        });
+      <% end %>
     });
-  <% end %>
+  </script>
 <% end %>

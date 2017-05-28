@@ -3,9 +3,18 @@ class LessonsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @lessons = Lesson.where.not(latitude: nil, longitude: nil)
-    @hash = build_map(@lessons)
-    @reviews = Review.all.sample(3)
+    unless params[:category]
+      @lessons = Lesson.where.not(latitude: nil, longitude: nil)
+      @hash = build_map(@lessons)
+      @reviews = Review.all.sample(3)
+      @algolia = true
+    else
+      @lessons = Lesson.where.not(latitude: nil, longitude: nil)
+                       .where(category: params[:category])
+      @hash = build_map(@lessons)
+      @reviews = Review.all.sample(3)
+      @algolia = false
+    end
   end
 
   def show
@@ -13,9 +22,9 @@ class LessonsController < ApplicationController
     @review = Review.new
      # Select 3 cards for 'you might be interested in'
     @lessons_category = Lesson.where(category: @lesson.category)[0..3]
+    @hash = build_map([@lesson])
     @reviews = @lesson.reviews
     @average_rating = @reviews.empty? ? -1 : @reviews.reduce(0) { |s,r| s += r.rating }/@reviews.size
-    @hash = build_map([@lesson])
   end
 
   def new
@@ -40,10 +49,6 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     redirect_to user_path
-  end
-
-  def category
-    @lessons = Lesson.where(category: params[:category])
   end
 
   private
